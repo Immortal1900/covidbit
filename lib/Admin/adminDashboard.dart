@@ -30,7 +30,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
         title: Text("Admin"),
       ),
       drawer: Draw(context),
-      body: suspectedCity.length==null?Center(child: CircularProgressIndicator()):Container(
+      body: suspectedCity.length!=totalReports?Center(child: CircularProgressIndicator()):Container(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
