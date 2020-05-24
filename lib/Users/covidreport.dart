@@ -135,7 +135,7 @@ Widget projectWidget() {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reports"),
+        title: Text("Satte wise COVID Report"),
       ),
       body:  projectWidget()
     );

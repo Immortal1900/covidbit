@@ -20,4 +20,10 @@ stateData(var tt,var nv,var pos,var nib,var ncb){
   numicubeds=ncb;
 }
 }
+class stategraphdata{
+  static List <double> positive=[];
+  stategraphdata(var as){
+    positive.add(double.parse(as));
+  }
+}
 

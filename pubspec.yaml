@@ -24,6 +24,7 @@ dependencies:
   http: ^0.12.1
   dio: ^3.0.9
   intl:
+  flutter_sparkline: ^0.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

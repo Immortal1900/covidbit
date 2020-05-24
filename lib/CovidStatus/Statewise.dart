@@ -1,14 +1,16 @@
 import 'dart:convert';
+import 'dart:ui';
 import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
 //import 'package:covid19bitdurg/Users/covidreport.dart';
 
 
-
+bool listcreted=false;
 class statewise extends StatefulWidget {
   @override
   _statewiseState createState() => _statewiseState();
@@ -69,17 +71,42 @@ class _statewiseState extends State<statewise> {
           child: Text("No of ICU Beds: "+stateData.numicubeds),
         ),
 
-        ],
+        listcreted==true? Container(
+
+            width: MediaQuery.of(context).size.width,
+          color: Colors.lightBlueAccent,
+            child:Column(
+              children: <Widget>[
+                Text("POSITIVE CASES GROWTH"),
+                Card(child: Sparkline(
+                  data: stategraphdata.positive,
+                  pointsMode:PointsMode.last,
+                )
+
+                ),
+              ],
+            )
+         ):
 
 
-      ),
-
+        Container(
+          child: Text("Creating graph...."),
         )
 
-      ),
 
+            /*  FutureBuilder(
+                builder: (context, projectSnap) {
+                  listcreted==true?Container():Container(
+                    child: Text("SDA"),
+                  );
 
+                },
 
+              )*/
+        ],
+        ),
+        )
+        ),
       ),
     );
   }
@@ -88,17 +115,12 @@ class _statewiseState extends State<statewise> {
     bool datefound=false;
     int i=0;
     shape.std.forEach((f){
-
       if(f.state.contains(setSeletedState.selectedstate)){
-
         var now = new DateTime.now();
         var previousdate = now.subtract(Duration(days: i));
         var formatter = new DateFormat('dd/MM/yyyy');
         String formattedDate = formatter.format(previousdate);
-
-
         if(f.updatedon.contains(formattedDate)) {
-
           datefound=true;
           print(formattedDate);
           print("NUMBER OF VANTILATOIRS ${f.numofventilators}");
@@ -110,13 +132,10 @@ class _statewiseState extends State<statewise> {
       i++;
       shape.std.forEach((f){
         if(f.state.contains(setSeletedState.selectedstate)){
-
           var now = new DateTime.now();
           var previousdate = now.subtract(Duration(days: i));
-
           var formatter = new DateFormat('dd/MM/yyyy');
           String formattedDate = formatter.format(previousdate);
-
           if(f.updatedon.contains(formattedDate)) {
             datefound=true;
             print(formattedDate);
@@ -133,10 +152,15 @@ class _statewiseState extends State<statewise> {
         }
       });
     }
+    shape.std.forEach((f){
+      if(f.state.contains(setSeletedState.selectedstate)){
+      stategraphdata(f.positive);
+      }
+    });
+    print("LIST CREATED IS ${stategraphdata.positive}");
+    listcreted=true;
 
-
-
-  }
+    }
 }
 
 class Statestesteddata{
