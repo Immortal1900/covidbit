@@ -2,7 +2,7 @@
     package="com.covidbitdurg">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="covid19bitdurg"

@@ -18,7 +18,7 @@ class _MainFetchDataState extends State<MainFetchData> {
       isLoading = true;
     });
     final response =
-    await http.get("https://indian-cities-api-nocbegfhqg.now.sh/cities");
+    await http.get("https://api.covid19india.org/state_district_wise.json");
     if (response.statusCode == 200) {
       list = (json.decode(response.body) as List)
           .map((data) => new Data.fromJson(data))
@@ -27,7 +27,7 @@ class _MainFetchDataState extends State<MainFetchData> {
         isLoading = false;
       });
     } else {
-      throw Exception('Failed to load photos');
+      throw Exception('Failed to load data');
     }
   }
 
@@ -35,7 +35,7 @@ class _MainFetchDataState extends State<MainFetchData> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Fetch Data JSON"),        ),
+          title: Text("Fetch Data JSON"),),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(8.0),
           child: RaisedButton(
@@ -75,7 +75,6 @@ class Data {
       title: json['City'],
       state: json['State'],
       dist: json['District'],
-
     );
   }
 }

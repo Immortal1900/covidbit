@@ -12,7 +12,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
   List<String>suspectedState=[];
   List<String>suspectedDist=[];
   List<String>suspectedCity=[];
-  
+
+  bool isFatched=false;
   int totalReports=0;
 
 
@@ -30,7 +31,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
         title: Text("Admin"),
       ),
       drawer: Draw(context),
-      body: suspectedCity.length!=totalReports?Center(child: CircularProgressIndicator()):Container(
+      body: isFatched==false?Center(child: CircularProgressIndicator()):Container(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,6 +178,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
     catch(e){
       print(e);
     }
+    setState(() {
+      isFatched=true;
+    });
 
   }
 
