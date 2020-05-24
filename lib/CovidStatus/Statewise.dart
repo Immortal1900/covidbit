@@ -54,6 +54,9 @@ class _statewiseState extends State<statewise> {
           padding: EdgeInsets.fromLTRB(20,20,20,20),
           child:  ListView(
             children: <Widget>[
+              Text(setSeletedState.selectedstate,
+                style: TextStyle(height: 5, fontSize:30),
+              ),
             Card(
             child: Text("No. of ventilators: "+stateData.numofventilators),
       ),
@@ -62,7 +65,7 @@ class _statewiseState extends State<statewise> {
         )
         ,
         Card(
-          child: Text("Total Positive cased: "+stateData.positive),
+          child: Text("Total Positive cases: "+stateData.positive),
         ),
         Card(
           child: Text("No. of Isolation Beds: "+stateData.numisolationbeds),
@@ -70,7 +73,7 @@ class _statewiseState extends State<statewise> {
         Card(
           child: Text("No of ICU Beds: "+stateData.numicubeds),
         ),
-
+        SizedBox(height: 20),
         listcreted==true? Container(
 
             width: MediaQuery.of(context).size.width,
@@ -79,6 +82,7 @@ class _statewiseState extends State<statewise> {
               children: <Widget>[
                 Text("POSITIVE CASES GROWTH"),
                 Card(child: Sparkline(
+                  lineColor: Colors.red,
                   data: stategraphdata.positive,
                   pointsMode:PointsMode.last,
                 )
