@@ -25,6 +25,8 @@ dependencies:
   dio: ^3.0.9
   intl:
   flutter_sparkline: ^0.1.0
+  flutter_svg: ^0.17.4
+  fl_chart: ^0.9.4
 
 
   # The following adds the Cupertino Icons font to your application.
