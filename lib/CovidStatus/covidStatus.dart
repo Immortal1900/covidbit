@@ -528,7 +528,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                   width: 200,
                   color: Colors.white,
                   child:  ListView.builder(
-                      controller: _controller,
+                      //controller: _controller,
                       shrinkWrap: true,
                       itemCount: stateNames.length,
                       itemBuilder: (context, index) {
