@@ -3,6 +3,7 @@
 import 'package:covid19bitdurg/Admin/adminDashboard.dart';
 import 'package:covid19bitdurg/CovidStatus/Statewise.dart';
 import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
+import 'package:covid19bitdurg/CovidStatus/stateDetail.dart';
 import 'package:covid19bitdurg/Users/covidreport.dart';
 import 'package:covid19bitdurg/Users/submit.dart';
 import 'package:covid19bitdurg/Users/suspectedIndputForm.dart';
@@ -27,7 +28,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home:
         //statewise(),
-       // CovidReports(),
+
+        //CovidReports(),
+
         //MainFetchData(),
         //AuthService().handleAuth(),
         //PushFirebase()
@@ -36,7 +39,10 @@ class MyApp extends StatelessWidget {
         // AdminDashboard(),
         //SubmitForm(),
         //CovidReports(),
-      Covid19Status(),
+
+       Covid19Status(),
+        //StateDetail(),
+
 
       routes: <String, WidgetBuilder> {
       '/SuspectedForm': (BuildContext context) => SuspectedForm(),
