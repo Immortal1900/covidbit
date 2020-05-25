@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
         // AdminDashboard(),
         //SubmitForm(),
         //CovidReports(),
-        //Covid19Status(),
-        StateDetail(),
+       Covid19Status(),
+        //StateDetail(),
 
       routes: <String, WidgetBuilder> {
       '/SuspectedForm': (BuildContext context) => SuspectedForm(),

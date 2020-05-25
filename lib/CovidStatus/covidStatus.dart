@@ -1,16 +1,14 @@
-import 'package:covid19bitdurg/CovidStatus/choiceOptions.dart';
+import 'package:covid19bitdurg/CovidStatus/choiceDistrict.dart';
+import 'package:covid19bitdurg/CovidStatus/choiceState.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-
 
 
 class Covid19Status extends StatefulWidget {
   @override
   _Covid19StatusState createState() => _Covid19StatusState();
 }
-
 class _Covid19StatusState extends State<Covid19Status> {
 
   ScrollController _controller=ScrollController();
@@ -99,7 +97,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                 //choiceState()
                                Navigator.of(context).push(new MaterialPageRoute<Null>(
                                     builder: (BuildContext context){
-                                      return new ChoiceOption();
+                                      return new ChoiceState();
                                     },
                                 ));
 
@@ -382,7 +380,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                             onPressed: (){
                               Navigator.of(context).push(new MaterialPageRoute<Null>(
                                 builder: (BuildContext context){
-                                  return new ChoiceOption();
+                                  return new ChoiceDistrict();
                                 },
                               ));
                             },)
