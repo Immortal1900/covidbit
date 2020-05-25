@@ -131,9 +131,6 @@ class _Covid19StatusState extends State<Covid19Status> {
     listcreated=true;
   }
   void getSeletedData1( Statelist1 shape1) {
-    print(shape1.std1.length);
-    int a=shape1.std1.length;
-
     shape1.std1.forEach((f){
       if(f.status.contains("Confirmed")) {
         stateconfirmed(f.statec);
@@ -239,6 +236,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
+
                       children: <Widget>[
                         Row(
                           children: <Widget>[
@@ -307,14 +305,15 @@ class _Covid19StatusState extends State<Covid19Status> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[   listcreated==true?      Container(
+                              children: <Widget>[
+                                listcreated==true?      Container(
                                 height: 150,
-                                width: 120,
+                                width: 100,
                                 child: Card(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15.0),
                                   ),
-                                  margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
+                                  margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                                   elevation: 10.0,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -379,12 +378,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                 ),
                               ):      Container(
                                 height: 150,
-                                width: 120,
+                                width: 100,
                                 child: Card(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15.0),
                                   ),
-                                  margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
+                                  margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                                   elevation: 10.0,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -451,12 +450,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                 /********************CONFIRMED END****************/
                                 listcreated==true? Container(
                                   height: 150,
-                                  width: 120,
+                                  width: 100,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -520,12 +519,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                 ): Container(
                                   height: 150,
-                                  width: 120,
+                                  width: 100,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -591,12 +590,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                 /*****************ATCIVE END*******************************/
                                 listcreated==true?Container(
                                   height: 150,
-                                  width: 130,
+                                  width: 100,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -661,12 +660,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                 ):Container(
                                   height: 150,
-                                  width: 130,
+                                  width: 100,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -731,145 +730,145 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                 ),
                                 /******************************DECEASED START**************/
-                                listcreated==true? Container(
-                                  height: 150,
-                                  width: 120,
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
-                                    elevation: 10.0,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        //LineReportChart(),
-                                        lineChart1(context,Color(0xFFFF4848)),
-                                        Padding(
-                                            padding: const EdgeInsets.only(top:8.0),
-                                            child:RichText(
-                                                text: TextSpan(
-                                                    text: statedeaths.deathcount.toString(),
-                                                    style:
-                                                    Theme.of(context).textTheme.title.copyWith(
-                                                        color: Color(0xFFFF4848),
-                                                        fontWeight: FontWeight.bold
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top:8.0),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(5),
-                                                  border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        offset: Offset(0, 4),
-                                                        blurRadius: 10,
-                                                        color:   Color(0xFFFF4848)
-                                                    ),
-                                                  ],
-                                                ),
-                                                child: CircleAvatar(
-                                                  radius: 2.5,
-                                                  backgroundColor: Colors.white,
-
-                                                ),
-                                              ),
-                                              Padding(
-                                                  padding: const EdgeInsets.only(left:8.0),
-                                                  child:RichText(
-                                                    text: TextSpan(
-                                                        text: "DECEASED",
-                                                        style: TextStyle(
-                                                            color: Color(0xFFFF4848),
-                                                            fontSize: 14
-                                                        )
-                                                    ),
-                                                  )
-                                              ),
-                                            ],
-                                          ),
+                    Expanded(child:             listcreated==true? Container(
+                      height: 150,
+                      width: 100,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                        elevation: 10.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            //LineReportChart(),
+                            lineChart1(context,Color(0xFFFF4848)),
+                            Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child:RichText(
+                                    text: TextSpan(
+                                        text: statedeaths.deathcount.toString(),
+                                        style:
+                                        Theme.of(context).textTheme.title.copyWith(
+                                            color: Color(0xFFFF4848),
+                                            fontWeight: FontWeight.bold
                                         )
-                                      ],
-                                    ),
-                                  ),
-                                ): Container(
-                                  height: 150,
-                                  width: 120,
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 15.0,vertical: 6.0),
-                                    elevation: 10.0,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        //LineReportChart(),
-                                        dummydata(context,Color(0xFFFF4848)),
-                                        Padding(
-                                            padding: const EdgeInsets.only(top:8.0),
-                                            child:RichText(
-                                                text: TextSpan(
-                                                    text: "0",
-                                                    style:
-                                                    Theme.of(context).textTheme.title.copyWith(
-                                                        color: Color(0xFFFF4848),
-                                                        fontWeight: FontWeight.bold
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top:8.0),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(5),
-                                                  border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        offset: Offset(0, 4),
-                                                        blurRadius: 10,
-                                                        color:   Color(0xFFFF4848)
-                                                    ),
-                                                  ],
-                                                ),
-                                                child: CircleAvatar(
-                                                  radius: 2.5,
-                                                  backgroundColor: Colors.white,
-
-                                                ),
-                                              ),
-                                              Padding(
-                                                  padding: const EdgeInsets.only(left:8.0),
-                                                  child:RichText(
-                                                    text: TextSpan(
-                                                        text: "DECEASED",
-                                                        style: TextStyle(
-                                                            color: Color(0xFFFF4848),
-                                                            fontSize: 14
-                                                        )
-                                                    ),
-                                                  )
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
+                                    )
                                 )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top:8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            offset: Offset(0, 4),
+                                            blurRadius: 10,
+                                            color:   Color(0xFFFF4848)
+                                        ),
+                                      ],
+                                    ),
+                                    child: CircleAvatar(
+                                      radius: 2.5,
+                                      backgroundColor: Colors.white,
+
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding: const EdgeInsets.only(left:8.0),
+                                      child:RichText(
+                                        text: TextSpan(
+                                            text: "DECEASED",
+                                            style: TextStyle(
+                                                color: Color(0xFFFF4848),
+                                                fontSize: 14
+                                            )
+                                        ),
+                                      )
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ): Container(
+                      height: 150,
+                      width: 100,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                        elevation: 10.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            //LineReportChart(),
+                            dummydata(context,Color(0xFFFF4848)),
+                            Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child:RichText(
+                                    text: TextSpan(
+                                        text: "0",
+                                        style:
+                                        Theme.of(context).textTheme.title.copyWith(
+                                            color: Color(0xFFFF4848),
+                                            fontWeight: FontWeight.bold
+                                        )
+                                    )
+                                )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top:8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            offset: Offset(0, 4),
+                                            blurRadius: 10,
+                                            color:   Color(0xFFFF4848)
+                                        ),
+                                      ],
+                                    ),
+                                    child: CircleAvatar(
+                                      radius: 2.5,
+                                      backgroundColor: Colors.white,
+
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding: const EdgeInsets.only(left:8.0),
+                                      child:RichText(
+                                        text: TextSpan(
+                                            text: "DECEASED",
+                                            style: TextStyle(
+                                                color: Color(0xFFFF4848),
+                                                fontSize: 14
+                                            )
+                                        ),
+                                      )
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ))
 /****************************DECEASED END*********************/
 
                               ],
