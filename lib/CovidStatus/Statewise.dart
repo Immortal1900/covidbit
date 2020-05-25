@@ -21,9 +21,10 @@ class _statewiseState extends State<statewise> {
   void initState() {
     // TODO: implement initState
     print("SLECTED STATE IS ${setSeletedState.selectedstate}");
-    getapi();
+
     super.initState();
   }
+  /*
   void getapi() async {
     final response = await http.get("https://api.covid19india.org/state_test_data.json");
     if (response.statusCode == 200) {
@@ -38,7 +39,7 @@ class _statewiseState extends State<statewise> {
       throw Exception('Failed to load data');
     }
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +84,7 @@ class _statewiseState extends State<statewise> {
                 Text("POSITIVE CASES GROWTH"),
                 Card(child: Sparkline(
                   lineColor: Colors.red,
-                  data: stategraphdata.positive,
+               //   data: stategraphdata.positive,
                   pointsMode:PointsMode.last,
                 )
 
@@ -91,7 +92,6 @@ class _statewiseState extends State<statewise> {
               ],
             )
          ):
-
 
         Container(
           child: Text("Creating graph...."),
@@ -114,7 +114,7 @@ class _statewiseState extends State<statewise> {
       ),
     );
   }
-
+/*
   void getSeletedData( Statelist shape) {
     bool datefound=false;
     int i=0;
@@ -224,5 +224,5 @@ class Statelist {
         std: stateList
       //stdl: stdlist
     );
-  }
+  }*/
 }

@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home:
         //statewise(),
+
         //CovidReports(),
+
         //MainFetchData(),
         //AuthService().handleAuth(),
         //PushFirebase()
@@ -37,8 +39,10 @@ class MyApp extends StatelessWidget {
         // AdminDashboard(),
         //SubmitForm(),
         //CovidReports(),
+
        Covid19Status(),
         //StateDetail(),
+
 
       routes: <String, WidgetBuilder> {
       '/SuspectedForm': (BuildContext context) => SuspectedForm(),
