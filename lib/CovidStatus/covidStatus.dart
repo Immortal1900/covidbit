@@ -542,6 +542,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                         ),
                       ],
                     )
+
                 ),
                 ]
           ),
