@@ -106,12 +106,10 @@ shape1.std1.forEach((f){
 //****************************************************************************GRAPH MODEL*****************************************************
 
 class Statestesteddata1{
-  //String title;
+
   var statec;
-
-
   Statestesteddata1({
-    var statec
+   this.statec
     //this.dist
   });
   factory  Statestesteddata1.fromJson(Map<String, dynamic> Json) {

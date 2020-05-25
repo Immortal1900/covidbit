@@ -50,7 +50,6 @@ class _ChoiceOptionState extends State<ChoiceOption> {
               },
             );
           }
-
       ),),
     );
   }
