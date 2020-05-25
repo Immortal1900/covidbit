@@ -1,8 +1,9 @@
 class setSeletedState{
   static var selectedstate="Chhattisgarh";
-
-  setSeletedState(var s){
+  static var selectedstatecode="ct";
+  setSeletedState(var s,var sc){
     selectedstate=s;
+    selectedstatecode=sc;
   }
 }
 class stateData{
@@ -20,10 +21,23 @@ stateData(var tt,var nv,var pos,var nib,var ncb){
   numicubeds=ncb;
 }
 }
-class stategraphdata{
-  static List <double> positive=[];
-  stategraphdata(var as){
-    positive.add(double.parse(as));
+class stateactive{
+  static List <double> active=[];
+  stateactive(var as){
+    active.add(double.parse(as));
+  }
+}
+class statedeaths{
+  static List <double> deaths=[];
+  stateadeaths(var as){
+    deaths.add(double.parse(as));
+  }
+}
+
+class staterecoverd{
+  static List <double> recovered=[];
+  staterecoverd(var as){
+    recovered.add(double.parse(as));
   }
 }
 

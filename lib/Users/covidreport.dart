@@ -3,6 +3,7 @@ import 'package:covid19bitdurg/CovidStatus/Statewise.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:covid19bitdurg/SetData/Setdata.dart';
+import 'package:covid19bitdurg/CovidStatus/statedetail.dart';
 String SelectedState;
 var jsondecoded;
 class CovidReports extends StatefulWidget {
@@ -11,43 +12,87 @@ class CovidReports extends StatefulWidget {
 }
 class _CovidReportsState extends State<CovidReports> {
 String SelectedState;
+List <String> states=[
+"Andaman and Nicobar Islands",
+"Andhra Pradesh",
+"Arunachal Pradesh",
+"Assam",
+"Bihar",
+"Chandigarh",
+"Chhattisgarh",
+"Dadra and Nagar Haveli",
+"Daman and Diu",
+"Delhi",
+"Goa",
+"Gujarat",
+"Haryana",
+"Himachal Pradesh",
+"Jammu and Kashmir",
+"Jharkhand",
+"Karnataka",
+"Kerala",
+"Ladakh",
+"Lakshadweep",
+"Madhya Pradesh",
+"Maharashtra",
+"Manipur",
+"Meghalaya",
+"Mizoram",
+"Nagaland",
+"Odisha",
+"Puducherry",
+"Punjab",
+"Rajasthan",
+"Sikkim",
+"Tamil Nadu",
+"Telangana",
+"Tripura",
+"Uttar Pradesh",
+"Uttarakhand",
+"West Bengal"
+];
 
-List <String> states=["Andhra Pradesh",
-  "Arunachal Pradesh",
-  "Assam",
-  "Bihar",
-  "Chhattisgarh",
-  "Goa",
-  "Gujarat",
-  "Haryana",
-  "Himachal Pradesh",
-  "Jammu and Kashmir",
-  "Jharkhand",
-  "Karnataka",
-  "Kerala",
-  "Madhya Pradesh",
-  "Maharashtra",
-  "Manipur",
-  "Meghalaya",
-  "Mizoram",
-  "Nagaland",
-  "Odisha",
-  "Punjab",
-  "Rajasthan",
-  "Sikkim",
-  "Tamil Nadu",
-  "Telangana",
-  "Tripura",
-  "Uttarakhand",
-  "Uttar Pradesh",
-  "West Bengal",
-  "Andaman and Nicobar Islands",
-  "Chandigarh",
-  "Dadra and Nagar Haveli",
-  "Daman and Diu",
-  "Delhi",
-  "Lakshadweep",
-  "Puducherry"];
+List <String> statecode=[
+  "an",
+  "ap",
+  "ar",
+  "as",
+  "br",
+  "ch",
+  "ct",
+  "dd",
+  "dl",
+  "dn",
+  "ga",
+  "gj",
+  "hp",
+  "hr",
+  "jh",
+  "jk",
+  "ka",
+  "kl",
+  "la",
+  "ld",
+  "mh",
+  "ml",
+  "mn",
+  "mp",
+  "mz",
+  "nl",
+  "or",
+  "pb",
+  "py",
+  "rj",
+  "sk",
+  "tg",
+  "tn",
+  "tr",
+  "tt",
+  "un",
+  "up",
+  "ut",
+  "wb"
+];
 @override
   void initState() {
     // TODO: implement initState
@@ -60,8 +105,6 @@ List <String> states=["Andhra Pradesh",
     setState(() {
       isLoading = true;
     });
-
-
     final response = await http.get("https://api.covid19india.org/state_district_wise.json");
     if (response.statusCode == 200) {
       var jsonresponce=await json.decode(response.body);
@@ -112,12 +155,13 @@ Widget projectWidget() {
                     width: MediaQuery.of(context).size.width*0.8,
                     height: 30,
                     child:Card(
-
                         child:InkWell(
                           onTap:  (){
                             setSeletedState.selectedstate=states[index];
+                            setSeletedState.selectedstatecode=statecode[index];
                             print(setSeletedState.selectedstate);
-                            Navigator.push(context,MaterialPageRoute(builder: (context) => statewise()));
+                            print(setSeletedState.selectedstatecode);
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => statedetail()));
                           },
                           child: Text(states[index],
                           textAlign: TextAlign.center,),
