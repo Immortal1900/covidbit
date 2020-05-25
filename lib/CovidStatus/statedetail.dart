@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'dart:ui';
 import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,10 +60,19 @@ print(shape1.std1.length);
 int a=shape1.std1.length;
 
 shape1.std1.forEach((f){
-
-    print("ACTTIVE CASEE${f.statec}");
-
+    if(f.status.contains("Confirmed")) {
+      stateconfirmed(f.statec);
+    }
+    if(f.status.contains("Recovered")) {
+      staterecoverd(f.statec);
+    }
+    if(f.status.contains("Deceased")) {
+      statedeaths(f.statec);
+    }
 });
+listcreted=true;
+print(statedeaths.deaths);
+print(staterecoverd.recovered);
 
     //  print("LIST CREATED IS ${stategraphdata.positive}");
 
@@ -85,16 +95,35 @@ shape1.std1.forEach((f){
                   Text(setSeletedState.selectedstate,
                     style: TextStyle(height: 5, fontSize:30),
                   ),
+                  Text("RECOEVRED"),
+                  listcreted==false?Container():Container(
+                    child: Sparkline(
+                      lineColor: Colors.green,
+                      data:staterecoverd.recovered,
+                      pointsMode:PointsMode.last,
+                    ),
+                  ),
+                  Text("Confirmed"),
+               AspectRatio(
+            aspectRatio: 1.2,
+            child: Container(
+              child: Sparkline(
+                lineColor: Colors.red,
+                data:statedeaths.deaths,
+                pointsMode:PointsMode.last,
+              ),
+            )
+    ),
+                  Text("DECEASED"),
+                  Container(
+                    child: Sparkline(
+                      lineColor: Colors.red,
+                      data:statedeaths.deaths,
+                      pointsMode:PointsMode.last,
+                    ),
+                  )
 
-                  /*  FutureBuilder(
-                builder: (context, projectSnap) {
-                  listcreted==true?Container():Container(
-                    child: Text("SDA"),
-                  );
 
-                },
-
-              )*/
                 ],
               ),
             )
@@ -108,14 +137,16 @@ shape1.std1.forEach((f){
 class Statestesteddata1{
 
   var statec;
+  var status;
   Statestesteddata1({
-   this.statec
+   this.statec,
+    this.status
     //this.dist
   });
   factory  Statestesteddata1.fromJson(Map<String, dynamic> Json) {
     return Statestesteddata1(
       statec: Json[setSeletedState.selectedstatecode],
-
+        status:Json["status"]
     );
   }
 }
