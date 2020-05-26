@@ -5,10 +5,12 @@ class Shape{
   Shape({
     this.stateUuassigned,
   });
-  factory Shape.fromJson(Map<String, dynamic> parsedJson) {
-    return Shape(
-      stateUuassigned:StateUnassigned.fromJson(parsedJson[districtData.statename]),
 
+  factory Shape.fromJson(Map<String, dynamic> parsedJson) {
+    print("AAAAAAAAAAAAAAAAAAAAAAAAAAAA ${setSeletedState.selectedstate}");
+    return Shape(
+
+      stateUuassigned:StateUnassigned.fromJson(parsedJson[setSeletedState.selectedstate]),
       // districtData: DistrictData.fromJson(parsedJson['districtData'])
     );
   }

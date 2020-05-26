@@ -110,7 +110,7 @@ List <String> statecode=[
       var jsonresponce=await json.decode(response.body);
       jsondecoded=jsonresponce;
       print("JSON DECDED IS$jsondecoded");
-      Shape shape = new Shape.fromJson(jsonresponce);
+    //  Shape shape = new Shape.fromJson(jsonresponce);
      // print(jsonresponce);
 
      // print("Statecode:"+"${shape.statecode}");
@@ -187,7 +187,7 @@ Widget projectWidget() {
 
 }
 
-
+/*
 class Shape{
   StateUnassigned stateUuassigned;
   Statecode statecode;
@@ -283,4 +283,4 @@ class Unassigned{
          recovered: Json['recovered']
     );
   }
-}
+}*/

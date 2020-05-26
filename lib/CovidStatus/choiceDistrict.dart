@@ -1,10 +1,11 @@
 import 'dart:convert';
-
 import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
 import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+
+import 'getapidata.dart';
 class ChoiceDistrict extends StatefulWidget {
   @override
   _ChoiceDistrictState createState() => _ChoiceDistrictState();
@@ -91,10 +92,17 @@ class _ChoiceDistrictState extends State<ChoiceDistrict> {
                           ),
                         ],
                       ),
-                      onTap: (){
+                      onTap: () async {
                         print(district[index]);
                         districtData.districtname=district[index];
-                        print(list);
+
+                        print("STATE IS ${setSeletedState.selectedstate}");
+                        print("DISTRICT IS ${districtData.districtname}");
+                        districtselected=true;
+                        await getSeletedData2();
+                        setState(() {
+
+                        });
                         Navigator.of(context).pop();
 
                       },

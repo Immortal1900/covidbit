@@ -15,12 +15,11 @@ import 'package:intl/intl.dart';
 
 import 'Statedatamodel.dart';
 Statelist1 shape1;
-Shape shape2;
 Statelist shape;
 Slist shape3;
 bool listcreated=false;
+bool districtselected=false;
 class Statestesteddata1{
-
   var statec;
   var status;
   Statestesteddata1({
@@ -69,7 +68,7 @@ class _Covid19StatusState extends State<Covid19Status> {
     final response = await http.get("https://api.covid19india.org/data.json");
     final response1=await http.get("https://api.covid19india.org/states_daily.json");
     final response3 = await http.get("https://api.covid19india.org/state_test_data.json");
-    final response2 = await http.get("https://api.covid19india.org/state_district_wise.json");
+
     if (response.statusCode == 200) {
       var jsonresponce=await json.decode(response.body);
       shape = new Statelist.fromJson(jsonresponce);
@@ -78,13 +77,10 @@ class _Covid19StatusState extends State<Covid19Status> {
     } else {
       throw Exception('Failed to load data');
     }
-    if (response2.statusCode == 200) {
-      var jsonresponce2=await json.decode(response2.body);
-      Shape shape2 = new Shape.fromJson(jsonresponce2);
-      getSeletedData2(shape2);
-    } else {
-      throw Exception('Failed to load data');
-    }
+
+
+
+
     if (response1.statusCode == 200) {
       var jsonresponce1=await json.decode(response1.body);
       shape1 = new Statelist1.fromJson(jsonresponce1);
@@ -97,9 +93,9 @@ class _Covid19StatusState extends State<Covid19Status> {
     }
     if (response3.statusCode == 200) {
       var jsonresponce3=await json.decode(response3.body);
-      print(jsonresponce3);
+
       shape3 = new Slist.fromJson(jsonresponce3);
-      print("data");
+
       getSeletedData3(shape3);
       setState(() {
 
@@ -228,7 +224,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(statetotaldata.lastupdatde,
+                              Text(statetotaldata.lastupdatde==null?"date":statetotaldata.lastupdatde,
                                 style: TextStyle(
                                   fontSize: 12.0,
                                 ),),
@@ -825,7 +821,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                         ),
                         Row(
                           children: <Widget>[
-                            Text("Bhilai",
+                            Text(districtselected==true?districtData.districtname:"SELECT DISTRICT",
                             ),
                             IconButton(icon: Icon(Icons.arrow_drop_down),
                               color: Colors.indigo,
@@ -839,7 +835,7 @@ class _Covid19StatusState extends State<Covid19Status> {
 
                           ],
                         ),
-                        Text("Bhilai",
+                        Text(districtselected==true?districtData.districtname:"SELECT DISTRICT",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
@@ -881,7 +877,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         padding: const EdgeInsets.only(top:8.0),
                                         child: RichText(
                                             text: TextSpan(
-                                                text: districtData.dactive.toString(),
+                                                text: districtselected==true?districtData.dactive.toString():"0",
                                                 style:
                                                 Theme.of(context).textTheme.title.copyWith(
                                                     color: Color(0xFFFF4848),
@@ -926,7 +922,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         padding: const EdgeInsets.only(top:8.0),
                                         child: RichText(
                                             text: TextSpan(
-                                                text: districtData.drecoverd.toString(),
+                                                text: districtselected==true?districtData.drecoverd.toString():"0",
                                                 style:
                                                 Theme.of(context).textTheme.title.copyWith(
                                                     color: Color(0xFF36C12C),
@@ -969,7 +965,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         padding: const EdgeInsets.only(top:8.0),
                                         child: RichText(
                                             text: TextSpan(
-                                                text:districtData.dconfirmed.toString(),
+                                                text:districtselected==true?districtData.dconfirmed.toString():"0",
                                                 style:
                                                 Theme.of(context).textTheme.title.copyWith(
                                                     color:Color(0xFFFF8748),

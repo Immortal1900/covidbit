@@ -1,19 +1,13 @@
-import 'package:covid19bitdurg/CovidStatus/choiceDistrict.dart';
-import 'package:covid19bitdurg/CovidStatus/choiceState.dart';
+
 import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:covid19bitdurg/CovidStatus/totaltestedmodel.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
 import 'package:covid19bitdurg/CovidStatus/Districtdatamodel.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'dart:convert';
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-
 import 'Statedatamodel.dart';
-import 'covidStatus.dart';
+
 void getSeletedData( Statelist shape) {
   shape.std.forEach((f){
     if(f.state.contains(setSeletedState.selectedstate)){
@@ -29,8 +23,7 @@ void getSeletedData( Statelist shape) {
 
 }
 void getSeletedData1( Statelist1 shape1) {
-  print(shape1.std1.length);
-  int a=shape1.std1.length;
+
   shape1.std1.forEach((f){
     if(f.status.contains("Confirmed")) {
       stateconfirmed(f.statec);
@@ -53,10 +46,20 @@ void getSeletedData1( Statelist1 shape1) {
   //  print("LIST CREATED IS ${stategraphdata.positive}");
 
 }
-void getSeletedData2( Shape shape1) {
-  print(shape1.stateUuassigned.districtData.unassigned.active);
-  districtData(shape1.stateUuassigned.districtData.unassigned.active,shape1.stateUuassigned.districtData.unassigned.recovered,shape1.stateUuassigned.districtData.unassigned.confirmed);
-}
+getSeletedData2() async {
+  final response2 = await http.get("https://api.covid19india.org/state_district_wise.json");
+  if (response2.statusCode == 200) {
+    var jsonresponce2=await json.decode(response2.body);
+    Shape shape2 = new Shape.fromJson(jsonresponce2);
+    print(shape2);
+    print(setSeletedState.selectedstate);
+    print("${shape2.stateUuassigned.districtData.unassigned.active},${shape2.stateUuassigned.districtData.unassigned.recovered}${shape2.stateUuassigned.districtData.unassigned.confirmed}");
+    districtData(shape2.stateUuassigned.districtData.unassigned.active,shape2.stateUuassigned.districtData.unassigned.recovered,shape2.stateUuassigned.districtData.unassigned.confirmed);
+
+  } else {
+    throw Exception('Failed to load data');
+  }
+ }
 
 void getSeletedData3( Slist shape) {
   bool datefound=false;
@@ -69,7 +72,6 @@ void getSeletedData3( Slist shape) {
       String formattedDate = formatter.format(previousdate);
       if(f.updatedon.contains(formattedDate)) {
         datefound=true;
-        print(f.totaltested);
       }
     }
   });
@@ -83,7 +85,6 @@ void getSeletedData3( Slist shape) {
         String formattedDate = formatter.format(previousdate);
         if(f.updatedon.contains(formattedDate)) {
           datefound=true;
-          print("TOTAL TESTED ${f.totaltested}");
           stateData(f.totaltested);
         }
       }
