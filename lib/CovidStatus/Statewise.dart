@@ -24,16 +24,15 @@ class _statewiseState extends State<statewise> {
 
     super.initState();
   }
-  /*
+/*
   void getapi() async {
-    final response = await http.get("https://api.covid19india.org/state_test_data.json");
-    if (response.statusCode == 200) {
-      var jsonresponce=await json.decode(response.body);
+    final response3 = await http.get("https://api.covid19india.org/state_test_data.json");
+    if (response3.statusCode == 200) {
+      var jsonresponce3=await json.decode(response3.body);
 
-      Statelist shape = new Statelist.fromJson(jsonresponce);
+      Slist shape = new Slist.fromJson(jsonresponce3);
       print("data");
       getSeletedData(shape);
-
       //setStates();
     } else {
       throw Exception('Failed to load data');
@@ -58,22 +57,7 @@ class _statewiseState extends State<statewise> {
               Text(setSeletedState.selectedstate,
                 style: TextStyle(height: 5, fontSize:30),
               ),
-            Card(
-            child: Text("No. of ventilators: "+stateData.numofventilators),
-      ),
-        Card(
-          child: Text("Total Tests: "+stateData.totaltested),
-        )
-        ,
-        Card(
-          child: Text("Total Positive cases: "+stateData.positive),
-        ),
-        Card(
-          child: Text("No. of Isolation Beds: "+stateData.numisolationbeds),
-        ),
-        Card(
-          child: Text("No of ICU Beds: "+stateData.numicubeds),
-        ),
+
         SizedBox(height: 20),
         listcreted==true? Container(
 
@@ -167,62 +151,31 @@ class _statewiseState extends State<statewise> {
     }
 }
 
-class Statestesteddata{
-  //String title;
-  int active;
-  var updatedon;
+class Statestotaltested{
   var totaltested;
-  int recovered;
-  var numofventilators;
-  var state;
-  var positive;
-  var numicubeds;
-  var numisolationbeds;
-
-
-  //  String dist;
-  Statestesteddata({
-    //this.title,
-
-    this.updatedon,
+    var state;
+  Statestotaltested({
     this.totaltested,
-    this.recovered,
-    this.numofventilators,
-    this.positive,
     this.state,
-    this.numicubeds,
-    this.numisolationbeds
-    //this.dist
   });
-  factory  Statestesteddata.fromJson(Map<String, dynamic> Json) {
-    return Statestesteddata(
-        updatedon: Json["updatedon"],
+  factory  Statestotaltested.fromJson(Map<String, dynamic> Json) {
+    return Statestotaltested(
         totaltested: Json["totaltested"],
-        numofventilators: Json["numventilators"],
-        positive:Json["positive"],
-        state: Json["state"],
-        numicubeds: Json["numicubeds"],
-        numisolationbeds:Json["numisolationbeds"]
+        state: Json["state"]
           );
   }
 }
-class Statelist {
+class Slist {
   final List<Statestesteddata> std;
-
-  Statelist({
+  Slist({
     this.std
   });
-  factory  Statelist.fromJson(Map<String, dynamic> parsedJson) {
+  factory  Slist.fromJson(Map<String, dynamic> parsedJson) {
     var list = parsedJson['states_tested_data'] as List;
     print(list.runtimeType);
-    List<Statestesteddata> stateList = list.map((i) => Statestesteddata.fromJson(i)).toList();
-
-    return Statelist(
-      //title: json['City'],
-      //state: parsedJson["id"],
-      //dist: json['District'],
-        std: stateList
-      //stdl: stdlist
+    List<Statestesteddata> stateobject = list.map((i) => Statestesteddata.fromJson(i)).toList();
+    return Slist(
+           std: stateobject
     );
   }*/
 }

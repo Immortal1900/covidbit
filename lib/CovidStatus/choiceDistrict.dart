@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
+import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -91,7 +93,10 @@ class _ChoiceDistrictState extends State<ChoiceDistrict> {
                       ),
                       onTap: (){
                         print(district[index]);
+                        districtData.districtname=district[index];
+                        print(list);
                         Navigator.of(context).pop();
+
                       },
                     );
                   }
@@ -106,12 +111,9 @@ class _ChoiceDistrictState extends State<ChoiceDistrict> {
     setState(() {
       isLoading = true;
     });
-    final response =
-    await http.get("https://indian-cities-api-nocbegfhqg.now.sh/cities");
+    final response =await http.get("https://indian-cities-api-nocbegfhqg.now.sh/cities");
     if (response.statusCode == 200) {
-      list = (json.decode(response.body) as List)
-          .map((data) => new Data.fromJson(data))
-          .toList();
+      list = (json.decode(response.body) as List).map((data) => new Data.fromJson(data)).toList();
       setDistrict();
     } else {
       throw Exception('Failed to load photos');
@@ -119,14 +121,12 @@ class _ChoiceDistrictState extends State<ChoiceDistrict> {
   }
   void setDistrict() async{
     list.forEach((f){
-      if(f.state.contains("Chhattisgarh"))
+      if(f.state.contains(setSeletedState.selectedstate))
       {
         setState(() {
           district.add(f.dist);
           districtiteam.add(f.dist);
-
         });
-
       }
       setState(() {
         district=district.toSet().toList();

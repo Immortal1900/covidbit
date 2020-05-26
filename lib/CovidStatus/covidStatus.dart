@@ -1,14 +1,23 @@
 import 'package:covid19bitdurg/CovidStatus/choiceDistrict.dart';
 import 'package:covid19bitdurg/CovidStatus/choiceState.dart';
 import 'package:covid19bitdurg/SetData/Setdata.dart';
+import 'package:covid19bitdurg/CovidStatus/totaltestedmodel.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:covid19bitdurg/CovidStatus/Districtdatamodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:covid19bitdurg/CovidStatus/getapidata.dart';
+import 'package:intl/intl.dart';
 
+import 'Statedatamodel.dart';
+Statelist1 shape1;
+Shape shape2;
+Statelist shape;
+Slist shape3;
 bool listcreated=false;
 class Statestesteddata1{
 
@@ -42,47 +51,8 @@ class Statelist1 {
   }
 }
 
-class Statestesteddata{
-  //String title;
-  var active;
-  var confirmed;
-  var deaths;
-  var recovered;
-  var state;
 
-  Statestesteddata({
-    this.active,
-    this.confirmed,
-    this.recovered,
-    this.deaths,
-    this.state,
-    //this.dist
-  });
-  factory  Statestesteddata.fromJson(Map<String, dynamic> Json) {
-    return Statestesteddata(
-        active: Json["active"],
-        confirmed: Json["confirmed"],
-        deaths: Json["deaths"],
-        recovered: Json["recovered"],
-        state: Json["state"]
-    );
-  }
-}
-class Statelist {
-  final List<Statestesteddata> std;
 
-  Statelist({
-    this.std
-  });
-  factory  Statelist.fromJson(Map<String, dynamic> parsedJson) {
-    var list = parsedJson['statewise'] as List;
-    print(list.runtimeType);
-    List<Statestesteddata> stateList = list.map((i) => Statestesteddata.fromJson(i)).toList();
-    return Statelist(
-        std: stateList
-    );
-  }
-}
 class Covid19Status extends StatefulWidget {
   @override
   _Covid19StatusState createState() => _Covid19StatusState();
@@ -93,76 +63,54 @@ class _Covid19StatusState extends State<Covid19Status> {
     // TODO: implement initState
     print("SLECTED STATE IS ${setSeletedState.selectedstate}");
     getapi();
-    super.initState();
+      super.initState();
   }
   void getapi() async {
     final response = await http.get("https://api.covid19india.org/data.json");
     final response1=await http.get("https://api.covid19india.org/states_daily.json");
+    final response3 = await http.get("https://api.covid19india.org/state_test_data.json");
+    final response2 = await http.get("https://api.covid19india.org/state_district_wise.json");
     if (response.statusCode == 200) {
       var jsonresponce=await json.decode(response.body);
-      Statelist shape = new Statelist.fromJson(jsonresponce);
+      shape = new Statelist.fromJson(jsonresponce);
       getSeletedData(shape);
       //setStates();
     } else {
       throw Exception('Failed to load data');
     }
+    if (response2.statusCode == 200) {
+      var jsonresponce2=await json.decode(response2.body);
+      Shape shape2 = new Shape.fromJson(jsonresponce2);
+      getSeletedData2(shape2);
+    } else {
+      throw Exception('Failed to load data');
+    }
     if (response1.statusCode == 200) {
       var jsonresponce1=await json.decode(response1.body);
-      Statelist1 shape1 = new Statelist1.fromJson(jsonresponce1);
+      shape1 = new Statelist1.fromJson(jsonresponce1);
       getSeletedData1(shape1);
-      //setStates();
+      setState(() {
+
+      });
+    } else {
+      throw Exception('Failed to load data');
+    }
+    if (response3.statusCode == 200) {
+      var jsonresponce3=await json.decode(response3.body);
+      print(jsonresponce3);
+      shape3 = new Slist.fromJson(jsonresponce3);
+      print("data");
+      getSeletedData3(shape3);
+      setState(() {
+
+      });
     } else {
       throw Exception('Failed to load data');
     }
   }
-  void getSeletedData( Statelist shape) {
-    shape.std.forEach((f){
-      if(f.state.contains(setSeletedState.selectedstate)){
-        print("ACTTIVE CASEE${f.active}");
-        print("CONFIRMED CASEE${f.confirmed}");
-        print("DEATHS CASEE${f.deaths}");
-        print("RECOVERED CASEE${f.recovered}");
-      }
-    });
-    //  print("LIST CREATED IS ${stategraphdata.positive}");
-    listcreated=true;
-  }
-  void getSeletedData1( Statelist1 shape1) {
-    print(shape1.std1.length);
-    int a=shape1.std1.length;
 
-    shape1.std1.forEach((f){
-      if(f.status.contains("Confirmed")) {
-        stateconfirmed(f.statec);
-      }
-      if(f.status.contains("Recovered")) {
-        staterecoverd(f.statec);
-      }
-      if(f.status.contains("Deceased")) {
-        statedeaths(f.statec);
-      }
-    });
-    double k=0,p=0;
-    for(int i=0;i<stateconfirmed.confirmed.length;i++){
-      k=k+stateconfirmed.confirmed[i];
-      p=p+staterecoverd.recovered[i];
-      print("TOTAL TIL NOW ${k}");
-      print(staterecoverd.recovered[i]);
-      stateactive(k-p);
-    }
-    print("${stateactive.active}");
-    stateactive.activecount=stateactive.active[stateactive.active.length-1];
-    listcreated=true;
-    print("${stateconfirmed.confirmed}");
-    print(staterecoverd.recovered);
-    print(statedeaths.deaths);
 
-    setState(() {
-      listcreated;
-    });
-    //  print("LIST CREATED IS ${stategraphdata.positive}");
 
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -240,7 +188,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                       children: <Widget>[
                         Row(
                           children: <Widget>[
-                            Text("Chhattisgarh"),
+                            Text(setSeletedState.selectedstate),
 
                             IconButton(icon: Icon(Icons.arrow_drop_down),
                               color: Color(0xFFC73830),
@@ -260,7 +208,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text("Chhattisgarh",
+                            Text(setSeletedState.selectedstate,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -280,13 +228,13 @@ class _Covid19StatusState extends State<Covid19Status> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text("Last Update On 23.05.2020",
+                              Text(statetotaldata.lastupdatde,
                                 style: TextStyle(
                                   fontSize: 12.0,
                                 ),),
                               RichText(
                                   text: TextSpan(
-                                      text: "1500",
+                                      text: stateData.totaltested,
                                       style: TextStyle(
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.bold,
@@ -325,7 +273,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                             padding: const EdgeInsets.only(top:8.0),
                                             child: RichText(
                                                 text: TextSpan(
-                                                    text:stateconfirmed.confirmcount.toString(),
+                                                    text:statetotaldata.confirmed.toString(),
                                                     style:
                                                     Theme.of(context).textTheme.title.copyWith(
                                                         color:  Color(0xFFFF8748),
@@ -467,7 +415,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                             padding: const EdgeInsets.only(top:8.0),
                                             child:RichText(
                                                 text: TextSpan(
-                                                    text: stateactive.activecount.toString(),
+                                                    text: statetotaldata.active.toString(),
                                                     style:
                                                     Theme.of(context).textTheme.title.copyWith(
                                                         color: Color(0xFFFF4848),
@@ -607,7 +555,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                             padding: const EdgeInsets.only(top:8.0),
                                             child:RichText(
                                                 text: TextSpan(
-                                                    text:staterecoverd.recoverdcount.toString(),
+                                                    text:statetotaldata.recovered.toString(),
                                                     style:
                                                     Theme.of(context).textTheme.title.copyWith(
                                                         color: Color(0xFF36C12C),
@@ -749,7 +697,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                             padding: const EdgeInsets.only(top:8.0),
                                             child:RichText(
                                                 text: TextSpan(
-                                                    text: statedeaths.deathcount.toString(),
+                                                    text: statetotaldata.deaths.toString(),
                                                     style:
                                                     Theme.of(context).textTheme.title.copyWith(
                                                         color: Color(0xFFFF4848),
@@ -933,7 +881,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         padding: const EdgeInsets.only(top:8.0),
                                         child: RichText(
                                             text: TextSpan(
-                                                text: "20",
+                                                text: districtData.dactive.toString(),
                                                 style:
                                                 Theme.of(context).textTheme.title.copyWith(
                                                     color: Color(0xFFFF4848),
@@ -978,7 +926,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         padding: const EdgeInsets.only(top:8.0),
                                         child: RichText(
                                             text: TextSpan(
-                                                text: "10",
+                                                text: districtData.drecoverd.toString(),
                                                 style:
                                                 Theme.of(context).textTheme.title.copyWith(
                                                     color: Color(0xFF36C12C),
@@ -1021,7 +969,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         padding: const EdgeInsets.only(top:8.0),
                                         child: RichText(
                                             text: TextSpan(
-                                                text: "100",
+                                                text:districtData.dconfirmed.toString(),
                                                 style:
                                                 Theme.of(context).textTheme.title.copyWith(
                                                     color:Color(0xFFFF8748),
@@ -1181,7 +1129,6 @@ List<FlSpot> dummyspots(){
     FlSpot(10,2.65),
   ];
 }
-
 List<FlSpot> getSpots1(){
   List<FlSpot> lo=[];
   for(int i=0;i<statedeaths.deaths.length;i++){
@@ -1211,8 +1158,6 @@ List<FlSpot> getSpots3(){
   }
   return lo;
 }
-
-
 class ClippingClass extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {

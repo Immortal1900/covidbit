@@ -8,18 +8,22 @@ class setSeletedState{
 }
 class stateData{
 static var totaltested="";
-static var numofventilators="";
-static var positive="";
-static var numisolationbeds="";
-static var numicubeds="";
-stateData(var tt,var nv,var pos,var nib,var ncb){
-
+stateData(var tt){
   totaltested=tt;
-  numofventilators=nv;
-  positive=pos;
-  numisolationbeds=nib;
-  numicubeds=ncb;
 }
+}
+class districtData{
+  static var statename="Chhattisgarh";
+  static var districtname="Durg";
+  static var dactive=0;
+  static var drecoverd=0;
+  static var ddeceased=0;
+  static var dconfirmed=0;
+  districtData(var a,var b, var c){
+    dactive=a;
+    drecoverd=b;
+    dconfirmed=c;
+  }
 }
 class stateconfirmed{
   static List <double> confirmed=[];
@@ -29,8 +33,18 @@ class stateconfirmed{
     confirmcount=confirmcount+int.parse(as);
   }
 }
+class statetotaldata{
+  static var active;
+  static var confirmed;
+  static var deaths;
+  static var recovered;
+  static var state;
+  static var lastupdatde;
+  statetotaldata(var a,var b,var c,var d,var f,var g){
+    active=a;confirmed=b;deaths=c;recovered=d;state=f;lastupdatde=g;
+  }
+}
 class statedeaths{
-
   static List <double> deaths=[];
   static int deathcount=0;
   statedeaths(var as){
