@@ -1,4 +1,5 @@
-import 'package:covid19bitdurg/CovidStatus/choiceOptions.dart';
+import 'package:covid19bitdurg/CovidStatus/choiceDistrict.dart';
+import 'package:covid19bitdurg/CovidStatus/choiceState.dart';
 import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -157,7 +158,7 @@ class _Covid19StatusState extends State<Covid19Status> {
     print(statedeaths.deaths);
 
     setState(() {
-    listcreated;
+      listcreated;
     });
     //  print("LIST CREATED IS ${stategraphdata.positive}");
 
@@ -248,7 +249,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                 //choiceState()
                                 Navigator.of(context).push(new MaterialPageRoute<Null>(
                                   builder: (BuildContext context){
-                                    return new ChoiceOption();
+                                    return new ChoiceState();
                                   },
                                 ));
 
@@ -287,7 +288,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   text: TextSpan(
                                       text: "1500",
                                       style: TextStyle(
-                                        fontSize: 14.0,
+                                        fontSize: 12.0,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.indigo,
                                       )
@@ -306,155 +307,155 @@ class _Covid19StatusState extends State<Covid19Status> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 listcreated==true?      Container(
-                                height: 150,
-                                width: 120,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
-                                  elevation: 10.0,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      // LineReportChart(),
-                                      lineChart3(context, Color(0xFFFF8748)),
-                                      Padding(
-                                          padding: const EdgeInsets.only(top:8.0),
-                                          child: RichText(
-                                              text: TextSpan(
-                                                  text:stateconfirmed.confirmcount.toString(),
-                                                  style:
-                                                  Theme.of(context).textTheme.title.copyWith(
-                                                      color:  Color(0xFFFF8748),
-                                                      fontWeight: FontWeight.bold
-                                                  )
-                                              )
-                                          )
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top:8.0),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(5),
-                                                border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      offset: Offset(0, 4),
-                                                      blurRadius: 10,
-                                                      color:   Color(0xFFFF8748)
-                                                  ),
-                                                ],
-                                              ),
-                                              child: CircleAvatar(
-                                                radius: 2.5,
-                                                backgroundColor: Colors.white,
-
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left:8.0),
-                                              child:
-                                              RichText(
+                                  height: 150,
+                                   width:MediaQuery.of(context).size.width*0.24,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                                    elevation: 10.0,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        // LineReportChart(),
+                                        lineChart3(context, Color(0xFFFF8748)),
+                                        Padding(
+                                            padding: const EdgeInsets.only(top:8.0),
+                                            child: RichText(
                                                 text: TextSpan(
-                                                    text: "Confirmed",
-                                                    style: TextStyle(
+                                                    text:stateconfirmed.confirmcount.toString(),
+                                                    style:
+                                                    Theme.of(context).textTheme.title.copyWith(
                                                         color:  Color(0xFFFF8748),
-                                                        fontSize: 14
+                                                        fontWeight: FontWeight.bold
                                                     )
+                                                )
+                                            )
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top:8.0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                  border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset(0, 4),
+                                                        blurRadius: 10,
+                                                        color:   Color(0xFFFF8748)
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: CircleAvatar(
+                                                  radius: 2.5,
+                                                  backgroundColor: Colors.white,
+
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ):      Container(
-                                height: 150,
-                                width: 120,
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
-                                  elevation: 10.0,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      // LineReportChart(),
-                                      dummydata(context, Color(0xFFFF8748)),
-                                      Padding(
-                                          padding: const EdgeInsets.only(top:8.0),
-                                          child: RichText(
-                                              text: TextSpan(
-                                                  text: "0",
-                                                  style:
-                                                  Theme.of(context).textTheme.title.copyWith(
-                                                      color:  Color(0xFFFF8748),
-                                                      fontWeight: FontWeight.bold
-                                                  )
-                                              )
-                                          )
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top:8.0),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(5),
-                                                border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      offset: Offset(0, 4),
-                                                      blurRadius: 10,
-                                                      color:   Color(0xFFFF8748)
+                                              Padding(
+                                                padding: const EdgeInsets.only(left:8.0),
+                                                child:
+                                                RichText(
+                                                  text: TextSpan(
+                                                      text: "CONFIRMED",
+                                                      style: TextStyle(
+                                                          color:  Color(0xFFFF8748),
+                                                          fontSize: 10
+                                                      )
                                                   ),
-                                                ],
-                                              ),
-                                              child: CircleAvatar(
-                                                radius: 2.5,
-                                                backgroundColor: Colors.white,
-
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left:8.0),
-                                              child:
-                                              RichText(
-                                                text: TextSpan(
-                                                    text: "Confirmed",
-                                                    style: TextStyle(
-                                                        color:  Color(0xFFFF8748),
-                                                        fontSize: 14
-                                                    )
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ):      Container(
+                                  height: 150,
+                                   width:MediaQuery.of(context).size.width*0.24,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
+                                    elevation: 10.0,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        // LineReportChart(),
+                                        dummydata(context, Color(0xFFFF8748)),
+                                        Padding(
+                                            padding: const EdgeInsets.only(top:8.0),
+                                            child: RichText(
+                                                text: TextSpan(
+                                                    text: "0",
+                                                    style:
+                                                    Theme.of(context).textTheme.title.copyWith(
+                                                        color:  Color(0xFFFF8748),
+                                                        fontWeight: FontWeight.bold
+                                                    )
+                                                )
+                                            )
                                         ),
-                                      )
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.only(top:8.0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                  border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset(0, 4),
+                                                        blurRadius: 10,
+                                                        color:   Color(0xFFFF8748)
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: CircleAvatar(
+                                                  radius: 2.5,
+                                                  backgroundColor: Colors.white,
+
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left:8.0),
+                                                child:
+                                                RichText(
+                                                  text: TextSpan(
+                                                      text: "CONFIRMED",
+                                                      style: TextStyle(
+                                                          color:  Color(0xFFFF8748),
+                                                          fontSize: 10
+                                                      )
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
                                 /********************CONFIRMED END****************/
                                 listcreated==true? Container(
                                   height: 150,
-                                  width: 120,
+                                   width:MediaQuery.of(context).size.width*0.24,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -505,7 +506,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                                         text: "ACTIVE",
                                                         style: TextStyle(
                                                             color: Color(0xFFFF4848),
-                                                            fontSize: 14
+                                                            fontSize: 10
                                                         )
                                                     ),
                                                   )
@@ -518,12 +519,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                 ): Container(
                                   height: 150,
-                                  width: 120,
+                                  width:MediaQuery.of(context).size.width*0.24,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -574,7 +575,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                                         text: "ACTIVE",
                                                         style: TextStyle(
                                                             color: Color(0xFFFF4848),
-                                                            fontSize: 14
+                                                            fontSize: 10
                                                         )
                                                     ),
                                                   )
@@ -589,12 +590,12 @@ class _Covid19StatusState extends State<Covid19Status> {
                                 /*****************ATCIVE END*******************************/
                                 listcreated==true?Container(
                                   height: 150,
-                                  width: 130,
+                                    width:MediaQuery.of(context).size.width*0.24,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -642,10 +643,10 @@ class _Covid19StatusState extends State<Covid19Status> {
                                                   padding: const EdgeInsets.only(left:8.0),
                                                   child:RichText(
                                                     text: TextSpan(
-                                                        text: "Recovered",
+                                                        text: "RECOVERED",
                                                         style: TextStyle(
                                                             color: Color(0xFF36C12C),
-                                                            fontSize: 14
+                                                            fontSize: 10
                                                         )
                                                     ),
                                                   )
@@ -659,19 +660,19 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                 ):Container(
                                   height: 150,
-                                  width: 130,
+                                    width:MediaQuery.of(context).size.width*0.24,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
                                     elevation: 10.0,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
                                         //LineReportChart(),
-                                       dummydata(context, Color(0xFF36C12C)),
+                                        dummydata(context, Color(0xFF36C12C)),
                                         Padding(
                                             padding: const EdgeInsets.only(top:8.0),
                                             child:RichText(
@@ -712,10 +713,10 @@ class _Covid19StatusState extends State<Covid19Status> {
                                                   padding: const EdgeInsets.only(left:8.0),
                                                   child:RichText(
                                                     text: TextSpan(
-                                                        text: "Recovered",
+                                                        text: "RECOVERED",
                                                         style: TextStyle(
                                                             color: Color(0xFF36C12C),
-                                                            fontSize: 14
+                                                            fontSize: 10
                                                         )
                                                     ),
                                                   )
@@ -729,146 +730,146 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                 ),
                                 /******************************DECEASED START**************/
-                    Expanded(child:             listcreated==true? Container(
-                      height: 150,
-                      width: 120,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
-                        elevation: 10.0,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            //LineReportChart(),
-                            lineChart1(context,Color(0xFFFF4848)),
-                            Padding(
-                                padding: const EdgeInsets.only(top:8.0),
-                                child:RichText(
-                                    text: TextSpan(
-                                        text: statedeaths.deathcount.toString(),
-                                        style:
-                                        Theme.of(context).textTheme.title.copyWith(
-                                            color: Color(0xFFFF4848),
-                                            fontWeight: FontWeight.bold
-                                        )
-                                    )
-                                )
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top:8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            offset: Offset(0, 4),
-                                            blurRadius: 10,
-                                            color:   Color(0xFFFF4848)
-                                        ),
-                                      ],
+                                Expanded(child:             listcreated==true? Container(
+                                  height: 150,
+                                   width:MediaQuery.of(context).size.width*0.24,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    child: CircleAvatar(
-                                      radius: 2.5,
-                                      backgroundColor: Colors.white,
-
-                                    ),
-                                  ),
-                                  Padding(
-                                      padding: const EdgeInsets.only(left:8.0),
-                                      child:RichText(
-                                        text: TextSpan(
-                                            text: "DECEASED",
-                                            style: TextStyle(
-                                                color: Color(0xFFFF4848),
-                                                fontSize: 14
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
+                                    elevation: 10.0,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        //LineReportChart(),
+                                        lineChart1(context,Color(0xFFFF4848)),
+                                        Padding(
+                                            padding: const EdgeInsets.only(top:8.0),
+                                            child:RichText(
+                                                text: TextSpan(
+                                                    text: statedeaths.deathcount.toString(),
+                                                    style:
+                                                    Theme.of(context).textTheme.title.copyWith(
+                                                        color: Color(0xFFFF4848),
+                                                        fontWeight: FontWeight.bold
+                                                    )
+                                                )
                                             )
                                         ),
-                                      )
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ): Container(
-                      height: 150,
-                      width: 120,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
-                        elevation: 10.0,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            //LineReportChart(),
-                            dummydata(context,Color(0xFFFF4848)),
-                            Padding(
-                                padding: const EdgeInsets.only(top:8.0),
-                                child:RichText(
-                                    text: TextSpan(
-                                        text: "0",
-                                        style:
-                                        Theme.of(context).textTheme.title.copyWith(
-                                            color: Color(0xFFFF4848),
-                                            fontWeight: FontWeight.bold
+                                        Padding(
+                                          padding: const EdgeInsets.only(top:8.0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                  border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset(0, 4),
+                                                        blurRadius: 10,
+                                                        color:   Color(0xFFFF4848)
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: CircleAvatar(
+                                                  radius: 2.5,
+                                                  backgroundColor: Colors.white,
+
+                                                ),
+                                              ),
+                                              Padding(
+                                                  padding: const EdgeInsets.only(left:8.0),
+                                                  child:RichText(
+                                                    text: TextSpan(
+                                                        text: "DECEASED",
+                                                        style: TextStyle(
+                                                            color: Color(0xFFFF4848),
+                                                            fontSize: 10
+                                                        )
+                                                    ),
+                                                  )
+                                              ),
+                                            ],
+                                          ),
                                         )
-                                    )
-                                )
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top:8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            offset: Offset(0, 4),
-                                            blurRadius: 10,
-                                            color:   Color(0xFFFF4848)
-                                        ),
                                       ],
                                     ),
-                                    child: CircleAvatar(
-                                      radius: 2.5,
-                                      backgroundColor: Colors.white,
-
-                                    ),
                                   ),
-                                  Padding(
-                                      padding: const EdgeInsets.only(left:8.0),
-                                      child:RichText(
-                                        text: TextSpan(
-                                            text: "DECEASED",
-                                            style: TextStyle(
-                                                color: Color(0xFFFF4848),
-                                                fontSize: 14
+                                ): Container(
+                                  height: 150,
+                                   width:MediaQuery.of(context).size.width*0.24,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
+                                    elevation: 10.0,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        //LineReportChart(),
+                                        dummydata(context,Color(0xFFFF4848)),
+                                        Padding(
+                                            padding: const EdgeInsets.only(top:8.0),
+                                            child:RichText(
+                                                text: TextSpan(
+                                                    text: "0",
+                                                    style:
+                                                    Theme.of(context).textTheme.title.copyWith(
+                                                        color: Color(0xFFFF4848),
+                                                        fontWeight: FontWeight.bold
+                                                    )
+                                                )
                                             )
                                         ),
-                                      )
+                                        Padding(
+                                          padding: const EdgeInsets.only(top:8.0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(5),
+                                                  border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        offset: Offset(0, 4),
+                                                        blurRadius: 10,
+                                                        color:   Color(0xFFFF4848)
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: CircleAvatar(
+                                                  radius: 2.5,
+                                                  backgroundColor: Colors.white,
+
+                                                ),
+                                              ),
+                                              Padding(
+                                                  padding: const EdgeInsets.only(left:8.0),
+                                                  child:RichText(
+                                                    text: TextSpan(
+                                                        text: "DECEASED",
+                                                        style: TextStyle(
+                                                            color: Color(0xFFFF4848),
+                                                            fontSize: 10
+                                                        )
+                                                    ),
+                                                  )
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ))
-/****************************DECEASED END*********************/
+                                ))
+                                /****************************DECEASED END*********************/
 
                               ],
                             ),
@@ -883,7 +884,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                               onPressed: (){
                                 Navigator.of(context).push(new MaterialPageRoute<Null>(
                                   builder: (BuildContext context){
-                                    return new ChoiceOption();
+                                    return new ChoiceDistrict();
                                   },
                                 ));
                               },)
@@ -988,57 +989,57 @@ class _Covid19StatusState extends State<Covid19Status> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(top:8.0),
-                                      child: Text("Recovered",style: TextStyle(
+                                      child: Text("RECOVERED",style: TextStyle(
                                           color: Color(0xFF36C12C)
                                       ),),
                                     )
                                   ],
                                 ),
-                            Column(
-                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                 mainAxisAlignment: MainAxisAlignment.center,
-                                 children: <Widget>[
-                                   Container(
-                                     decoration: BoxDecoration(
-                                       borderRadius: BorderRadius.circular(10),
-                                       border: Border.all(color: Color(0xFFFF8748),width: 5.0 ),
-                                       boxShadow: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(color: Color(0xFFFF8748),width: 5.0 ),
+                                        boxShadow: [
 
-                                         BoxShadow(
-                                             offset: Offset(0, 4),
-                                             blurRadius: 10,
-                                             color:  Color(0xFFFF8748)
-                                         ),
-                                       ],
-                                     ),
-                                     child: CircleAvatar(
-                                       radius: 5.0,
-                                       backgroundColor: Colors.white,
-                                     ),
-                                   ),
-                                   Padding(
-                                       padding: const EdgeInsets.only(top:8.0),
-                                       child: RichText(
-                                           text: TextSpan(
-                                               text: "100",
-                                               style:
-                                               Theme.of(context).textTheme.title.copyWith(
-                                                   color:Color(0xFFFF8748),
-                                                   fontSize: 18,
-                                                   fontWeight: FontWeight.bold
-                                               )
-                                           )
-                                       )
-                                   ),
-                                   Padding(
-                                     padding: const EdgeInsets.only(top:8.0),
-                                     child: Text("Confirmed",
-                                       style: TextStyle(
-                                           color: Color(0xFFFF8748)
-                                       ),),
-                                   )
-                                 ],
-                               )
+                                          BoxShadow(
+                                              offset: Offset(0, 4),
+                                              blurRadius: 10,
+                                              color:  Color(0xFFFF8748)
+                                          ),
+                                        ],
+                                      ),
+                                      child: CircleAvatar(
+                                        radius: 5.0,
+                                        backgroundColor: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.only(top:8.0),
+                                        child: RichText(
+                                            text: TextSpan(
+                                                text: "100",
+                                                style:
+                                                Theme.of(context).textTheme.title.copyWith(
+                                                    color:Color(0xFFFF8748),
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top:8.0),
+                                      child: Text("Confirmed",
+                                        style: TextStyle(
+                                            color: Color(0xFFFF8748)
+                                        ),),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
                           ),
@@ -1166,27 +1167,27 @@ Widget dummydata(BuildContext context,var color){
   );
 }
 List<FlSpot> dummyspots(){
-    return[
-      FlSpot(0,.5),
-      FlSpot(1,1.5),
-      FlSpot(2,.5),
-      FlSpot(3,.7),
-      FlSpot(4,.2),
-      FlSpot(5,1.5),
-      FlSpot(6,1.5),
-      FlSpot(7,1.7),
-      FlSpot(8,1),
-      FlSpot(9,2.8),
-      FlSpot(10,2.65),
-    ];
-  }
+  return[
+    FlSpot(0,.5),
+    FlSpot(1,1.5),
+    FlSpot(2,.5),
+    FlSpot(3,.7),
+    FlSpot(4,.2),
+    FlSpot(5,1.5),
+    FlSpot(6,1.5),
+    FlSpot(7,1.7),
+    FlSpot(8,1),
+    FlSpot(9,2.8),
+    FlSpot(10,2.65),
+  ];
+}
 
 List<FlSpot> getSpots1(){
   List<FlSpot> lo=[];
-      for(int i=0;i<statedeaths.deaths.length;i++){
-        lo.add(FlSpot(i.toDouble(),statedeaths.deaths[i]));
-      }
-      return lo;
+  for(int i=0;i<statedeaths.deaths.length;i++){
+    lo.add(FlSpot(i.toDouble(),statedeaths.deaths[i]));
+  }
+  return lo;
 }
 List<FlSpot> getSpots4(){
   List<FlSpot> lo=[];
