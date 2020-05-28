@@ -46,20 +46,21 @@ Widget Draw(BuildContext context) {
             ),
           ),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color(0xFF11249F),
           ),
         ),
 
-        ListTile(
-          title: Text('Report'),
-          onTap: () {
-            // Update the state of the app
-            // ...
-            // Then close the drawer
 
-            Navigator.of(context).pushNamedAndRemoveUntil('/SuspectedForm', ModalRoute.withName('/SuspectedForm'));
-          },
-        ),
+          ListTile(
+          title: Text('Report'),
+                 onTap: () {
+                   Navigator.pop(context);
+                   Navigator.of(context).pushNamed('/SuspectedForm');
+
+               // Navigator.of(context).pushNamedAndRemoveUntil('/SuspectedForm', ModalRoute.withName('/SuspectedForm'));
+                   },
+                  ),
+
 
         ListTile(
           title: Text('Admin Dashboard'),
@@ -70,6 +71,18 @@ Widget Draw(BuildContext context) {
             Navigator.pop(context);
             //Navigator.of(context).pushNamedAndRemoveUntil('/Create Post', ModalRoute.withName('/CreatorDashboad'));
             Navigator.of(context).pushNamed('/Admin Dashboard');
+          },
+        ),
+        ListTile(
+          title: Text('Covid Status'),
+          onTap: () {
+            // Update the state of the app
+            // ...
+            // Then close the drawer
+           // Navigator.pop(context);
+            //Navigator.of(context).pushNamedAndRemoveUntil('/Create Post', ModalRoute.withName('/CreatorDashboad'));
+            Navigator.of(context).pushNamedAndRemoveUntil('/CovidStatus', ModalRoute.withName('/CovidStatus'));
+
           },
         ),
 

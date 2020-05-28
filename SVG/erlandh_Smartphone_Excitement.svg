@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg4580" viewBox="0 0 156.48 374.89" version="1.0">
+  <title id="title3752">Smartphone Excitement</title>
+  <defs id="defs4582">
+    <linearGradient id="linearGradient3741" y2="165.52" xlink:href="#linearGradient3341" gradientUnits="userSpaceOnUse" x2="189.46" gradientTransform="translate(-119.89 19.1)" y1="164.05" x1="192.01"/>
+    <linearGradient id="linearGradient3744" y2="165.52" xlink:href="#linearGradient3341" gradientUnits="userSpaceOnUse" x2="189.46" gradientTransform="translate(-120.38 18.386)" y1="164.05" x1="192.01"/>
+    <linearGradient id="linearGradient3747" y2="165.52" xlink:href="#linearGradient3341" gradientUnits="userSpaceOnUse" x2="189.46" gradientTransform="translate(-120.96 17.538)" y1="164.05" x1="192.01"/>
+    <linearGradient id="linearGradient3341">
+      <stop id="stop3343" stop-color="#1a1a1a" offset="0"/>
+      <stop id="stop3345" stop-color="#1a1a1a" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient3750" y2="165.52" xlink:href="#linearGradient3341" gradientUnits="userSpaceOnUse" x2="189.46" gradientTransform="translate(-121.72 16.668)" y1="164.05" x1="192.01"/>
+    <filter id="filter3319" color-interpolation-filters="sRGB">
+      <feGaussianBlur id="feGaussianBlur3321" stdDeviation="0.47074762"/>
+    </filter>
+    <linearGradient id="linearGradient3755" y2="158.29" gradientUnits="userSpaceOnUse" x2="189.2" gradientTransform="translate(-121.72 16.668)" y1="174.36" x1="185.98">
+      <stop id="stop3325" stop-color="#1a1a1a" offset="0"/>
+      <stop id="stop3327" stop-color="#1a1a1a" stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="layer1" transform="translate(-253.96 -97.003)">
+    <g id="g3771" transform="matrix(2.5688 0 0 2.5688 141.25 -232.38)">
+      <path id="path2415" fill-rule="evenodd" fill="#241c1c" d="m63.64 267.05s-8.5863-3.283-13.132 0.75762-4.2932 4.7982-4.2932 4.7982l22.223-0.50507-2.2728-5.0508h-2.5254z"/>
+      <path id="path2413" d="m62.882 221.85s3.283 28.284 2.2728 35.86c-1.0102 7.5761-4.0406 8.8388-4.0406 8.8388l7.3236 2.0203s-3.283-37.123-2.0203-38.638c1.2627-1.5152 17.173-3.0304 17.678-0.50507 0.50507 2.5254 1.2627 40.406 1.2627 40.406l4.7982-3.283s-3.283-0.25253-3.283-3.7881c0-3.5355-1.0102-40.659-1.0102-40.659l-22.981-0.25253z" fill="#483737" fill-rule="evenodd"/>
+      <path id="path2394" d="m85.87 166.29-15.156 7.0625 0.15625 0.21875c-2.971 0.60368-5.4817 1.3649-6.2188 2.3125-3.5355 4.5457-5.0422 11.611-7.0625 16.156-2.0203 4.5457-4.0625-7.5625-4.0625-7.5625l-5.0312 4.0312s2.5067 13.636 8.0625 15.656c5.5558 2.0203 9.5938-15.156 9.5938-15.156l0.53125 2.5312c1.5972 7.986-10.381 25.766-7.3506 28.544 6.1966 5.6802 19.473 3.3572 26.29 2.5051 4.0406-0.50508 5.2889-2.2701 3.016-8.8361-0.61085-1.7647-1.3862-7.0136-1.299-9.9629-2.568-1.6666-4.5-2.6562-4.5-2.6562l2-8.5938s1.1384 1.2805 2.7188 2.7188c0.19009-5.9095 0.58562-11.303 1.8438-12.812 2.5254-3.0305 5.0422 0.50081 7.0625 3.5312 2.0203 3.0305 2.5305 9.5945-0.5 12.625-1.894 1.894-5.7724-0.94661-8.4062-3.3438-0.09172 2.8513-0.13858 5.8196-0.21875 8.5312 0.65694 0.42633 1.3423 0.86057 2.0625 1.375 3.5355 2.5254 11.61 3.0347 13.125-3.5312 1.5152-6.566 0.49412-21.209-2.0312-25.25-1.8899-3.0239-10.269-4.0724-14.375-4.4062 0.81449-2.6613-0.25-5.6875-0.25-5.6875z" fill="#d42020" fill-rule="evenodd"/>
+      <path id="path2385" fill="#ffb380" d="m72.214 133.45c-11.152 0-20.188 9.0667-20.188 20.219 0 4.5616 1.5407 8.7421 4.0938 12.125 4.1815 0.93864 13.836 2.6042 19.656-0.5 7.5762-4.0406 10.094-7.0938 10.094-7.0938 0 0.00001-2.0125 9.1098-10.094 10.625-5.3074 0.99514-12.317 0.64392-16.531 0.3125 3.512 2.9503 8.0265 4.7188 12.969 4.7188 11.152 0 20.219-9.0354 20.219-20.188 0-11.152-9.0667-20.219-20.219-20.219z"/>
+      <path id="path2387" d="m183.34 137.75c0 2.65-1.5829 4.7982-3.5355 4.7982s-3.5355-2.1482-3.5355-4.7982 1.5829-4.7982 3.5355-4.7982 3.5355 2.1482 3.5355 4.7982z" fill="#fff" transform="translate(-121.72 16.668)"/>
+      <path id="path2389" d="m200.52 136.24c0 4.0447-2.6005 7.3236-5.8084 7.3236s-5.8084-3.2789-5.8084-7.3236 2.6005-7.3236 5.8084-7.3236 5.8084 3.2789 5.8084 7.3236z" fill="#fff" transform="translate(-121.72 16.668)"/>
+      <path id="path2407" fill-rule="evenodd" fill="#4d4d4d" d="m73.489 194.82 13.385-11.112 1.2627 1.5152-13.637 11.112-2.7779 0.25254 1.7678-1.7678z"/>
+      <path id="path2403" d="m84.348 193.56s-0.25254-1.2627-1.5152-2.2728c-1.2627-1.0102-4.2932-1.7678-5.8084 0.25254s2.0203 1.2627 2.0203 1.2627-2.0203 2.0203-2.0203 3.5355-0.75761 3.7881 2.0203 4.0406c2.7779 0.25254 4.7982-1.7678 4.7982-1.7678l0.50508-5.0508z" fill="#ffb380" fill-rule="evenodd"/>
+      <path id="path2409" d="m195.72 140.91c0 1.1855-0.90452 2.1466-2.0203 2.1466s-2.0203-0.96105-2.0203-2.1466c0-1.1855 0.90452-2.1466 2.0203-2.1466s2.0203 0.96105 2.0203 2.1466z" fill="#4d4d4d" transform="translate(-121.72 16.162)"/>
+      <path id="path2411" d="m181.57 140.15c0 1.046-0.79146 1.894-1.7678 1.894-0.97631 0-1.7678-0.84799-1.7678-1.894s0.79146-1.894 1.7678-1.894c0.97631 0 1.7678 0.84799 1.7678 1.894z" fill="#4d4d4d" transform="translate(-121.72 16.668)"/>
+      <path id="path2417" fill-rule="evenodd" fill="#241c1c" d="m86.369 266.42s-8.5863-3.283-13.132 0.75762-4.2932 4.7982-4.2932 4.7982l22.223-0.50507-2.2728-5.0508h-2.5254z"/>
+      <path id="path2451" d="m54.296 178.16s-0.25254-3.0305 1.0102-3.5355c1.2627-0.50508 9.0914-3.0305 10.607-1.7678 1.5152 1.2627 11.112 15.91 10.607 17.425-0.50508 1.5152-10.859 2.7779-12.374 2.0203-1.5152-0.75762-10.102-13.89-9.849-14.142z" fill="#333" fill-rule="evenodd"/>
+      <path id="path2453" d="m54.993 178.5s-0.0093-1.1517 2.0101-1.2669c2.0194-0.11517 5.0415-1.1517 6.1798-0.92138 1.1383 0.23035 10.715 13.475 10.594 14.166-0.12073 0.69104-7.5604 1.958-8.954 1.3821-1.3936-0.57586-9.7028-13.245-9.83-13.36z" fill="url(#linearGradient3755)" fill-rule="evenodd"/>
+      <path id="path2399" d="m49.497 186.49s0.25254-3.0304 2.0203-6.0609 6.3134-5.3033 5.8084-2.0203c-0.50507 3.283-1.2627 2.0203-1.2627 2.0203s4.0406-0.75762 3.5355 1.5152c-0.50508 2.2728-2.7779 0.75761-2.7779 0.75761s6.0609 2.2728 3.5355 3.0305c-2.5254 0.75761-4.0406-1.0102-4.0406-1.0102s0 2.0203-2.7779 3.0304c-2.7779 1.0102-4.0406-1.2627-4.0406-1.2627z" fill="#ffb380" fill-rule="evenodd"/>
+      <path id="path2455" opacity=".74519" d="m60.167 173.8s4.0406-0.75762 4.672-0.56821c0.63134 0.1894 9.2176 12.438 9.5964 13.7 0.37881 1.2627 0.75761 2.5885 0.50507 2.4622-0.25253-0.12627-0.44194-2.4622-2.0203-4.5457-1.5784-2.0834-8.2706-10.985-8.2706-10.985l-6.6923 1.1364s0.94702-0.69448 2.2097-1.1996z" fill-rule="evenodd" filter="url(#filter3319)" fill="#808080"/>
+      <path id="path3331" d="m69.884 180.27s-0.35714 0.84821-0.75893 1.0714c-0.40178 0.22321-1.6071 0.53571-1.6071 0.53571l0.35714 0.3125s1.9643-0.49107 2.0536-0.98214c0.08928-0.49107 0.35714-0.625 0.35714-0.625l-0.40179-0.3125z" fill="url(#linearGradient3750)" fill-rule="evenodd"/>
+      <path id="path3349" d="m70.643 181.14s-0.35714 0.84821-0.75893 1.0714c-0.40178 0.22321-1.6071 0.53571-1.6071 0.53571l0.35714 0.3125s1.9643-0.49107 2.0536-0.98214c0.08928-0.49107 0.35714-0.625 0.35714-0.625l-0.40179-0.3125z" fill="url(#linearGradient3747)" fill-rule="evenodd"/>
+      <path id="path3353" d="m71.223 181.99s-0.35714 0.84821-0.75893 1.0714c-0.40178 0.22321-1.6071 0.53571-1.6071 0.53571l0.35714 0.3125s1.9643-0.49107 2.0536-0.98214c0.08928-0.49107 0.35714-0.625 0.35714-0.625l-0.40179-0.3125z" fill="url(#linearGradient3744)" fill-rule="evenodd"/>
+      <path id="path3357" d="m71.714 182.7s-0.35714 0.84821-0.75893 1.0714c-0.40178 0.22321-1.6071 0.53571-1.6071 0.53571l0.35714 0.3125s1.9643-0.49107 2.0536-0.98214c0.08928-0.49107 0.35714-0.625 0.35714-0.625l-0.40179-0.3125z" fill="url(#linearGradient3741)" fill-rule="evenodd"/>
+      <path id="path3361" opacity=".74519" d="m186.16 157c0 0.2219-0.43972 0.40179-0.98215 0.40179-0.54242 0-0.98214-0.17989-0.98214-0.40179s0.43972-0.40178 0.98214-0.40178c0.35874 0 0.68893 0.08 0.86132 0.20871" fill="#0f0" transform="matrix(1 -.18182 0 1 -122.35 50.336)"/>
+      <path id="path3693" d="m51.964 145.7 2.1429 1.25h0.35714" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3695" d="m55.893 140.52 1.607 1.97" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3697" d="m53.393 142.84 1.9643 1.7857" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3699" d="m62.321 139.27 0.71428 2.8572" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3701" d="m56.964 136.95 2.1429 2.3214" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3703" d="m61.607 134.45 1.6071 2.8572" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3705" d="m67.679 135.34 0.35714 3.2143" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3707" d="m65 132.67v3.0357" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3709" d="m71.786 135.17-0.17857 3.2143" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3711" d="m69.107 131.06v3.0357" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3713" d="m76.607 132.67-0.71429 2.6786" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3715" d="m79.643 135.34-2.3214 3.0357" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3717" d="m73.571 131.59v3.0357" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3719" d="m82.679 136.77-1.9643 2.3214" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3721" d="m85.893 136.59-1.9643 2.5" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3723" d="m88.75 140.17-2.3214 2.5" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3725" d="m90.893 143.92-2.5 0.71429" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3727" d="m92.679 146.59-3.3929 0.35714" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3729" d="m51.25 148.2 2.8571 0.89286" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3731" d="m59.464 140.88 1.4286 2.3214" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3733" d="m81.964 134.99-1.964 1.78" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3735" d="m79.286 132.49-1.6071 3.0357" stroke="#784421" stroke-width="1px" fill="none"/>
+      <path id="path3737" d="m87.143 138.2-1.7857 1.7857" stroke="#784421" stroke-width="1px" fill="none"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Smartphone Excitement</dc:title>
+        <dc:date>2010-01-15T18:10:16</dc:date>
+        <dc:description>cartoon, cartoon, clip art, clipart, image, man, man, media, people, people, person, person, phone, phone, png, public domain, remix, smartphone, smartphone, svg, technology, technology, unchecked, </dc:description>
+        <dc:source>http://openclipart.org/detail/28915/smartphone-excitement-by-erlandh</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>erlandh</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>cartoon</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>man</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>people</rdf:li>
+            <rdf:li>person</rdf:li>
+            <rdf:li>phone</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>remix</rdf:li>
+            <rdf:li>smartphone</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>technology</rdf:li>
+            <rdf:li>unchecked</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

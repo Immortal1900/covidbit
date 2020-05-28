@@ -55,6 +55,11 @@ flutter:
     - jasonfile/cities.json
     - SVG/Drcorona.svg
     - Images/virus.png
+    - SVG/nurse.svg
+    - SVG/paramedic.svg
+    - SVG/menu.svg
+    - lib/states-and-districts.json
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,5 +1,9 @@
 
+import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
+import 'package:covid19bitdurg/CovidStatus/getapidata.dart';
+import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 class ChoiceState extends StatefulWidget {
 
   @override
@@ -7,16 +11,96 @@ class ChoiceState extends StatefulWidget {
 }
 
 class _ChoiceStateState extends State<ChoiceState> {
-  List<String> stateNames=["Andhra Pradesh","Arunachal Pradesh",'Assam',"Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"];
+  List <String> stateitem=[
+    "Andaman and Nicobar Islands",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chandigarh",
+    "Chhattisgarh",
+    "Dadra and Nagar Haveli",
+    "Daman and Diu",
+    "Delhi",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jammu and Kashmir",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Ladakh",
+    "Lakshadweep",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Puducherry",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal"
+  ];
+
+  List <String> statecode=[
+    "an",
+    "ap",
+    "ar",
+    "as",
+    "br",
+    "ch",
+    "ct",
+    "dn",
+    "dd",
+    "dl",
+    "ga",
+    "gj",
+    "hr",
+    "hp",
+    "jk",
+    "jh",
+    "ka",
+    "kl",
+    "la",
+    "ld",
+    "mp",
+    "mh",
+    "mn",
+    "ml",
+    "mz",
+    "nl",
+    "or",
+    "py",
+    "pb",
+    "rj",
+    "sk",
+    "tn",
+    "tg",
+    "tr",
+    "up",
+    "ut",
+    "wb"
+  ];
   List<String>stateiteam=[];
   int stateListCount;
   @override
   void initState() {
     // TODO: implement initState
-    stateiteam.addAll(stateNames);
+    stateiteam.addAll(stateitem);
     stateListCount=stateiteam.length;
+   // getfirstdistrict();
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +171,17 @@ class _ChoiceStateState extends State<ChoiceState> {
                     ),
                     onTap: (){
                       print(stateiteam[index]);
+                      print(stateitem.length);
+                      print(statecode.length);
+                      setSeletedState.selectedstate=stateiteam[index];
+                      setSeletedState.selectedstatecode=statecode[index];
+                      print("SELECTED STATENAME ${setSeletedState.selectedstate}");
+                      print("SELECTED STATECODE ${setSeletedState.selectedstatecode}");
+                      getSeletedData(shape);
+                      getSeletedData1(shape1);
+                      //getSeletedData2(shape2);
+                      districtselected=false;
+                      getSeletedData3(shape3);
                       Navigator.of(context).pop();
                     },
                   );
@@ -103,7 +198,7 @@ class _ChoiceStateState extends State<ChoiceState> {
     String takequery= query.isNotEmpty?('${query[0].toUpperCase()}${query.substring(1)}'):null;
     print(takequery);
     List<String> dummydistList = [];
-    dummydistList.addAll(stateNames);
+    dummydistList.addAll(stateitem);
     if (query.isNotEmpty) {
       print("enter");
       List<String> dummyDistData = [];
@@ -122,7 +217,7 @@ class _ChoiceStateState extends State<ChoiceState> {
       setState(() {
         print("notEnter");
         stateiteam.clear();
-        stateiteam.addAll(stateNames);
+        stateiteam.addAll(stateitem);
         stateListCount=dummydistList.length;
       });
     }

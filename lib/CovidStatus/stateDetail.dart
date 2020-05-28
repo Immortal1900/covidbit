@@ -1,17 +1,21 @@
 import 'dart:convert';
+
 import 'dart:ui';
 import 'package:covid19bitdurg/SetData/Setdata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
+//import 'package:covid19bitdurg/Users/covidreport.dart';
 
-
-class StateDetail extends StatefulWidget {
+class statedetail extends StatefulWidget {
   @override
-  _StateDetailState createState() => _StateDetailState();
+  _statedetailState createState() => _statedetailState();
 }
 bool listcreted=false;
-class _StateDetailState extends State<StateDetail> {
+class _statedetailState extends State<statedetail> {
   @override
   void initState() {
     // TODO: implement initState
@@ -33,8 +37,7 @@ class _StateDetailState extends State<StateDetail> {
     if (response1.statusCode == 200) {
       var jsonresponce1=await json.decode(response1.body);
       Statelist1 shape1 = new Statelist1.fromJson(jsonresponce1);
-      getSeletedData1(shape1);
-      print("*******************************");
+     getSeletedData1(shape1);
       //setStates();
     } else {
       throw Exception('Failed to load data');
@@ -43,21 +46,33 @@ class _StateDetailState extends State<StateDetail> {
   void getSeletedData( Statelist shape) {
     shape.std.forEach((f){
       if(f.state.contains(setSeletedState.selectedstate)){
-        print("ACTTIVE CASEE: ${f.active}");
-        print("CONFIRMED CASEE: ${f.confirmed}");
-        print("DEATHS CASEE: ${f.deaths}");
-        print("RECOVERED CASEE: ${f.recovered}");
+      print("ACTTIVE CASEE${f.active}");
+      print("CONFIRMED CASEE${f.confirmed}");
+      print("DEATHS CASEE${f.deaths}");
+      print("RECOVERED CASEE${f.recovered}");
       }
     });
-    //  print("LIST CREATED IS ${stategraphdata.positive}");
+  //  print("LIST CREATED IS ${stategraphdata.positive}");
     listcreted=true;
   }
   void getSeletedData1( Statelist1 shape1) {
-    print(shape1.std1.length);
-    int a=shape1.std1.length;
-    shape1.std1.forEach((f){
-      print(f.statec);
-    });
+print(shape1.std1.length);
+int a=shape1.std1.length;
+
+shape1.std1.forEach((f){
+    if(f.status.contains("Confirmed")) {
+      stateconfirmed(f.statec);
+    }
+    if(f.status.contains("Recovered")) {
+      staterecoverd(f.statec);
+    }
+    if(f.status.contains("Deceased")) {
+      statedeaths(f.statec);
+    }
+});
+listcreted=true;
+print(statedeaths.deaths);
+print(staterecoverd.recovered);
 
     //  print("LIST CREATED IS ${stategraphdata.positive}");
 
@@ -80,16 +95,35 @@ class _StateDetailState extends State<StateDetail> {
                   Text(setSeletedState.selectedstate,
                     style: TextStyle(height: 5, fontSize:30),
                   ),
+                  Text("RECOEVRED"),
+                  listcreted==false?Container():Container(
+                    child: Sparkline(
+                      lineColor: Colors.green,
+                      data:staterecoverd.recovered,
+                      pointsMode:PointsMode.last,
+                    ),
+                  ),
+                  Text("Confirmed"),
+               AspectRatio(
+            aspectRatio: 1.2,
+            child: Container(
+              child: Sparkline(
+                lineColor: Colors.red,
+                data:statedeaths.deaths,
+                pointsMode:PointsMode.last,
+              ),
+            )
+    ),
+                  Text("DECEASED"),
+                  Container(
+                    child: Sparkline(
+                      lineColor: Colors.red,
+                      data:statedeaths.deaths,
+                      pointsMode:PointsMode.last,
+                    ),
+                  )
 
-                  /*  FutureBuilder(
-                builder: (context, projectSnap) {
-                  listcreted==true?Container():Container(
-                    child: Text("SDA"),
-                  );
 
-                },
-
-              )*/
                 ],
               ),
             )
@@ -101,18 +135,18 @@ class _StateDetailState extends State<StateDetail> {
 //****************************************************************************GRAPH MODEL*****************************************************
 
 class Statestesteddata1{
-  //String title;
+
   var statec;
-
-
+  var status;
   Statestesteddata1({
-    this.statec
+   this.statec,
+    this.status
     //this.dist
   });
-  factory  Statestesteddata1.fromJson(Map<String, dynamic> Json1) {
+  factory  Statestesteddata1.fromJson(Map<String, dynamic> Json) {
     return Statestesteddata1(
-      statec: Json1["date"],
-
+      statec: Json[setSeletedState.selectedstatecode],
+        status:Json["status"]
     );
   }
 }
@@ -122,8 +156,8 @@ class Statelist1 {
   Statelist1({
     this.std1
   });
-  factory  Statelist1.fromJson(Map<String, dynamic> parsedJson1) {
-    var list = parsedJson1['states_daily'] as List;
+  factory  Statelist1.fromJson(Map<String, dynamic> parsedJson) {
+    var list = parsedJson['states_daily'] as List;
     print(list.runtimeType);
     List<Statestesteddata1> stateList1 = list.map((i) => Statestesteddata1.fromJson(i)).toList();
     return Statelist1(
