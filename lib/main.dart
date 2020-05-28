@@ -9,9 +9,9 @@ import 'package:covid19bitdurg/Users/submit.dart';
 import 'package:covid19bitdurg/Users/suspectedIndputForm.dart';
 import 'package:covid19bitdurg/Users/userinputform.dart';
 import 'package:flutter/material.dart';
-import 'package:covid19bitdurg/jasondata.dart';
-import 'Auth/authservice.dart';
 
+import 'Auth/authservice.dart';
+import 'package:covid19bitdurg/CovidStatus/districtapi.dart';
 
 
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         // AdminDashboard(),
         //SubmitForm(),
         //CovidReports(),
-
+//ChoiceDistrict(),
        Covid19Status(),
         //StateDetail(),
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         '/UserForm':(BuildContext context) => RepoterForm(),
         '/Submit':(BuildContext context) => SubmitForm(),
      '/Admin Dashboard':(BuildContext context) => AdminDashboard(),
-      '/jsondata':(BuildContext context) => MainFetchData()
+
 
 
 

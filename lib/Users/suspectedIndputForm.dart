@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covid19bitdurg/setData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
 import '../drawer.dart';
@@ -36,6 +37,7 @@ class _SuspectedFormState extends State<SuspectedForm> {
   bool isCitySearcbox=false;
   bool isDisTextField=false;
   bool isCityTextField=false;
+  bool isNextButPressed=false;
 
   TextEditingController _statecontroller=TextEditingController();
   TextEditingController _distController=TextEditingController();
@@ -67,76 +69,89 @@ class _SuspectedFormState extends State<SuspectedForm> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Draw(context),
       appBar: AppBar(
         title: Text("Suspected Details"),
         backgroundColor: Color(0xFF004272),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.home),
+          onPressed: (){
+
+          },)
+        ],
+
       ),
-      drawer: Draw(context),
+
+
       body: isLoading
           ? Center(
         child: CircularProgressIndicator(),
-      ):SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.only(left:20.0,right: 20.0,top: 8.0,bottom: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.green,
-                        radius: 10.0,
+      ):Padding(
+        padding: const EdgeInsets.only(left:20.0,right: 20.0,top: 8.0,bottom: 8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: Colors.green,
+                      radius: 10.0,
 
 
-                      ),
-                      Expanded(
-                        flex: 2,
-                      child: Container(
-                          height: 5,
-                          //color: Colors.indigo,
-                          decoration: BoxDecoration(
-                              //borderRadius: BorderRadius.horizontal(left:  Radius.circular(10),right:Radius.circular(10)),
+                    ),
+                    Expanded(
+                      flex: 2,
+                    child: Container(
+                        height: 5,
+                        //color: Colors.indigo,
+                        decoration: BoxDecoration(
+                            //borderRadius: BorderRadius.horizontal(left:  Radius.circular(10),right:Radius.circular(10)),
 
-                              border: Border.all(width: 1,color: Colors.grey,)
-                          ),
-
+                            border: Border.all(width: 1,color: Colors.grey,)
                         ),
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.grey,
-                        radius: 10.0,
 
                       ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                              height: 5,
-              //color: Colors.indigo,
-                           decoration: BoxDecoration(
-                        // borderRadius: BorderRadius.horizontal(left:  Radius.circular(10),right:Radius.circular(10)),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      radius: 10.0,
 
-                              border: Border.all(width: 1,color: Colors.grey )
-                                   ),
+                    ),
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                            height: 5,
+            //color: Colors.indigo,
+                         decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.horizontal(left:  Radius.circular(10),right:Radius.circular(10)),
 
-                               ),
-                            ),
-                      CircleAvatar(
-                        backgroundColor: Colors.grey,
-                        radius: 10.0,
+                            border: Border.all(width: 1,color: Colors.grey )
+                                 ),
 
-                      ),
-                    ],
-                  ),
+                             ),
+                          ),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      radius: 10.0,
+
+                    ),
+                  ],
                 ),
-
-                TextField(
+              ),
+              isNextButPressed==false?Container():selectedfirestName==null?Text("* Please fill in the below fields",
+                style: TextStyle(
+                    color: Colors.red
+                ),):Container(),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: TextField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey, width: 2.0),
@@ -157,31 +172,43 @@ class _SuspectedFormState extends State<SuspectedForm> {
                   },
 
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                      ),
+              ),
 
-                      labelText: "Last Name",
-                      hintText: "Last Name",
+              isNextButPressed==false?Container():selectedlastname==null?Text("* Please fill in the below fields",
+                style: TextStyle(
+                    color: Colors.red
+                ),):Container(),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
                     ),
 
-                    onChanged: (value){
-                      setState(() {
-                       selectedlastname=value;
-
-                      });
-                    },
-
+                    labelText: "Last Name",
+                    hintText: "Last Name",
                   ),
+
+                  onChanged: (value){
+                    setState(() {
+                     selectedlastname=value;
+
+                    });
+                  },
+
                 ),
-                TextField(
+              ),
+              isNextButPressed==false?Container():selectedState==null?Text("* Please fill in the below fields",
+                style: TextStyle(
+                    color: Colors.red
+                ),):Container(),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: TextField(
                   controller: _statecontroller,
                   onChanged: (value) {
 
@@ -201,95 +228,106 @@ class _SuspectedFormState extends State<SuspectedForm> {
                   ),
 
                 ),
+              ),
 
-                isStateSearbox?Container(
+              isStateSearbox?Container(
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1,color: Colors.blue,)
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder
+                    (
+                      itemCount:stateListCount,
+                      itemBuilder: (BuildContext context, int index) {
+                        return  GestureDetector(
+                            onTap: (){
+                              print(stateiteam[index]);
+                              _statecontroller.text=stateiteam[index];
+                              setState(() {
+                                isStateSearbox=false;
+                                selectedState=stateiteam[index];
+                                isDisTextField=true;
+
+                              });
+                              setDistrict();
+                            },
+                            child: Text(stateiteam[index])
+                        );
+                      }
+                  ),
+                ),
+              ):Container(),
+              isNextButPressed==false?Container():selectedDist==null?Text("* Please fill in the below fields",
+                style: TextStyle(
+                    color: Colors.red
+                ),):Container(),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: TextField(
+                  controller: _distController,
+                  enabled: isDisTextField,
+                  onChanged: (value) {
+
+                    searchdistlist(value);
+                  },
+                  //controller: editingController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    ),
+
+                    labelText: "District",
+                    hintText: "Enter District Name",
+                  ),
+
+                ),
+              ),
+              isDistSearcbox?Container(
                   decoration: BoxDecoration(
                       border: Border.all(width: 1,color: Colors.blue,)
                   ),
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder
-                      (
-                        itemCount:stateListCount,
-                        itemBuilder: (BuildContext context, int index) {
-                          return  GestureDetector(
-                              onTap: (){
-                                print(stateiteam[index]);
-                                _statecontroller.text=stateiteam[index];
-                                setState(() {
-                                  isStateSearbox=false;
-                                  selectedState=stateiteam[index];
-                                  isDisTextField=true;
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder
+                    (
+                      itemCount:disListCount,
+                      itemBuilder: (BuildContext context, int index) {
+                        return  GestureDetector(
+                            onTap: (){
+                              print(districtiteam[index]);
+                              _distController.text=districtiteam[index];
+                              setState(() {
+                                isDistSearcbox=false;
+                                selectedDist=districtiteam[index];
+                                isCityTextField=true;
 
-                                });
-                                setDistrict();
-                              },
-                              child: Text(stateiteam[index])
-                          );
-                        }
-                    ),
-                  ),
-                ):Container(),
-                Padding(
-                  padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
-                  child: TextField(
-                    controller: _distController,
-                    enabled: isDisTextField,
-                    onChanged: (value) {
-
-                      searchdistlist(value);
-                    },
-                    //controller: editingController,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                      ),
-                      disabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                      ),
-
-                      labelText: "District",
-                      hintText: "Enter District Name",
-                    ),
-
+                              });
+                              setCity();
+                            },
+                            child: Text(districtiteam[index])
+                        );
+                      }
                   ),
                 ),
-                isDistSearcbox?Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1,color: Colors.blue,)
-                    ),
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder
-                      (
-                        itemCount:disListCount,
-                        itemBuilder: (BuildContext context, int index) {
-                          return  GestureDetector(
-                              onTap: (){
-                                print(districtiteam[index]);
-                                _distController.text=districtiteam[index];
-                                setState(() {
-                                  isDistSearcbox=false;
-                                  selectedDist=districtiteam[index];
-                                  isCityTextField=true;
-
-                                });
-                                setCity();
-                              },
-                              child: Text(districtiteam[index])
-                          );
-                        }
-                    ),
-                  ),
-                ):Container(),
-                TextField(
+              ):Container(),
+              isNextButPressed==false?Container():selectedCity==null?Text("* Please fill in the below fields",
+                style: TextStyle(
+                    color: Colors.red
+                ),):Container(),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: TextField(
                   controller: _cityController,
                   enabled: isCityTextField,
                   onChanged: (value) {
@@ -315,83 +353,92 @@ class _SuspectedFormState extends State<SuspectedForm> {
                   ),
 
                 ),
-                isCitySearcbox?Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1,color: Colors.blue,)
-                    ),
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder
-                      (
-                        itemCount:cityListCount,
-                        itemBuilder: (BuildContext context, int index) {
-                          return  GestureDetector(
-                              onTap: (){
-                                print(cityiteam[index]);
-                                _cityController.text=cityiteam[index];
-                                setState(() {
-                                  isCitySearcbox=false;
-                                  selectedCity=cityiteam[index];
-
-                                });
-                              },
-                              child: Text(cityiteam[index])
-                          );
-                        }
-                    ),
+              ),
+              isCitySearcbox?Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1,color: Colors.blue,)
                   ),
-                ):Container(),
-                Padding(
-                  padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
-                  child: TextField(
-                    maxLines: 5,
-                    onTap: (){
-                      setState(() {
-                        isCitySearcbox=false;
-                      });
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder
+                    (
+                      itemCount:cityListCount,
+                      itemBuilder: (BuildContext context, int index) {
+                        return  GestureDetector(
+                            onTap: (){
+                              print(cityiteam[index]);
+                              _cityController.text=cityiteam[index];
+                              setState(() {
+                                isCitySearcbox=false;
+                                selectedCity=cityiteam[index];
 
-                    },
-                    onChanged: (value) {
-                      selectedAdd=value;
-
-                    },
-                    //controller: editingController,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                      ),
-
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                      ),
-
-                      labelText: "Address",
-                      hintText: "Ente Address",
-                    ),
-
+                              });
+                            },
+                            child: Text(cityiteam[index])
+                        );
+                      }
                   ),
                 ),
-                RaisedButton(
-                  color: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Text("Next"),
-                  onPressed: (){
-                   SetData.suspectedFirstName=selectedfirestName;
-                  SetData.suspectedLastName=selectedfirestName;
-                   SetData.suspectedState= selectedState;
-                  SetData.suspecteddDis= selectedDist;
-                     SetData.suspectedCity= selectedCity;
-                   SetData.suspectedAddress= selectedAdd;
-                    Navigator.of(context).pushNamed("/UserForm");
+              ):Container(),
+              isNextButPressed==false?Container():selectedAdd==null?Text("* Please fill in the below fields",
+                style: TextStyle(
+                    color: Colors.red
+                ),):Container(),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0),
+                child: TextField(
+                  maxLines: 5,
+                  onTap: (){
+                    setState(() {
+                      isCitySearcbox=false;
+                    });
 
                   },
-                )
-              ],
-            ),
+                  onChanged: (value) {
+                    selectedAdd=value;
+
+                  },
+                  //controller: editingController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                    ),
+
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    ),
+
+                    labelText: "Address",
+                    hintText: "Ente Address",
+                  ),
+
+                ),
+              ),
+              RaisedButton(
+                color: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text("Next"),
+                onPressed: (){
+                  setState(() {
+                      isNextButPressed=true;
+                  });
+                 SetData.suspectedFirstName=selectedfirestName;
+                SetData.suspectedLastName=selectedfirestName;
+                 SetData.suspectedState= selectedState;
+                SetData.suspecteddDis= selectedDist;
+                   SetData.suspectedCity= selectedCity;
+                 SetData.suspectedAddress= selectedAdd;
+
+                 if(selectedCity!=null&&selectedAdd!=null&&selectedDist!=null&&selectedState!=null&&selectedlastname!=null&&selectedlastname!=null)
+                  Navigator.of(context).pushNamed("/UserForm");
+
+                },
+              )
+            ],
           ),
         ),
       ),

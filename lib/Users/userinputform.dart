@@ -34,6 +34,7 @@ class _RepoterFormState extends State<RepoterForm> {
   bool isCitySearcbox=false;
   bool isDisTextField=false;
   bool isCityTextField=false;
+  bool isButPressed=false;
 
   TextEditingController _statecontroller=TextEditingController();
   TextEditingController _distController=TextEditingController();
@@ -68,6 +69,13 @@ class _RepoterFormState extends State<RepoterForm> {
       appBar: AppBar(
         title: Text("Your Details"),
         backgroundColor: Color(0xFF004272),
+        centerTitle: true,
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.home),
+              onPressed: (){
+
+              },)
+          ]
       ),
       body: isLoading
           ? Center(
@@ -127,29 +135,42 @@ class _RepoterFormState extends State<RepoterForm> {
                     ],
                   ),
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                    ),
-
-                    labelText: "Firest Name",
-                    hintText: "First Name",
+                isButPressed==false?Container():selectedfirestName==null?Text("* Please fill in the below fields",
+                  style: TextStyle(
+                      color: Colors.red
                   ),
-
-                  onChanged: (value){
-                    setState(() {
-                      selectedfirestName=value;
-
-                    });
-                  },
-
-                ),
+                ):Container(),
                 Padding(
-                  padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                      ),
+
+                      labelText: "First Name",
+                      hintText: "First Name",
+                    ),
+
+                    onChanged: (value){
+                      setState(() {
+                        selectedfirestName=value;
+
+                      });
+                    },
+
+                  ),
+                ),
+                isButPressed==false?Container():selectedlastname==null?Text("* Please fill in the below fields",
+                  style: TextStyle(
+                      color: Colors.red
+                  ),
+                ):Container(),
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
                   child: TextField(
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -172,25 +193,33 @@ class _RepoterFormState extends State<RepoterForm> {
 
                   ),
                 ),
-                TextField(
-                  controller: _statecontroller,
-                  onChanged: (value) {
-
-                    searchList(value);
-                  },
-                  //controller: editingController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                    ),
-
-                    labelText: "State",
-                    hintText: "Enter State Name",
+                isButPressed==false?Container():selectedState==null?Text("* Please fill in the below fields",
+                  style: TextStyle(
+                      color: Colors.red
                   ),
+                ):Container(),
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: TextField(
+                    controller: _statecontroller,
+                    onChanged: (value) {
 
+                      searchList(value);
+                    },
+                    //controller: editingController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                      ),
+
+                      labelText: "State",
+                      hintText: "Enter State Name",
+                    ),
+
+                  ),
                 ),
 
                 isStateSearbox?Container(
@@ -220,8 +249,13 @@ class _RepoterFormState extends State<RepoterForm> {
                     ),
                   ),
                 ):Container(),
+                isButPressed==false?Container():selectedDist==null?Text("* Please fill in the below fields",
+                  style: TextStyle(
+                      color: Colors.red
+                  ),
+                ):Container(),
                 Padding(
-                  padding: const EdgeInsets.only(top:8.0,bottom: 8.0),
+                  padding: const EdgeInsets.only(top:8.0),
                   child: TextField(
                     controller: _distController,
                     enabled: isDisTextField,
@@ -274,31 +308,39 @@ class _RepoterFormState extends State<RepoterForm> {
                     ),
                   ),
                 ):Container(),
-                TextField(
-                  controller: _cityController,
-                  enabled: isCityTextField,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedCity=value;
-                    });
-                    searchCitylist(value);
-                  },
-                  //controller: editingController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                    ),
-
-                    labelText: "City",
-                    hintText: "Enter City Name",
+                isButPressed==false?Container():selectedCity==null?Text("* Please fill in the below fields",
+                  style: TextStyle(
+                      color: Colors.red
                   ),
+                ):Container(),
+                Padding(
+                  padding: const EdgeInsets.only(top:8.0),
+                  child: TextField(
+                    controller: _cityController,
+                    enabled: isCityTextField,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedCity=value;
+                      });
+                      searchCitylist(value);
+                    },
+                    //controller: editingController,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                      ),
 
+                      labelText: "City",
+                      hintText: "Enter City Name",
+                    ),
+
+                  ),
                 ),
                 isCitySearcbox?Container(
                   width: MediaQuery.of(context).size.width,
@@ -323,6 +365,11 @@ class _RepoterFormState extends State<RepoterForm> {
                           );
                         }
                     ),
+                  ),
+                ):Container(),
+                isButPressed==false?Container():selectedlastname==null?Text("* Please fill in the below fields",
+                  style: TextStyle(
+                      color: Colors.red
                   ),
                 ):Container(),
                 Padding(
@@ -368,6 +415,10 @@ class _RepoterFormState extends State<RepoterForm> {
                     SetData.reporterDis= selectedDist;
                     SetData.reporterCity= selectedCity;
                     SetData.reporterAddress= selectedAdd;
+                    setState(() {
+                      isButPressed=true;
+                    });
+                    if(selectedCity!=null&&selectedAdd!=null&&selectedDist!=null&&selectedState!=null&&selectedlastname!=null&&selectedlastname!=null)
                     Navigator.of(context).pushNamed('/Submit');
 
                   },

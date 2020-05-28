@@ -33,6 +33,15 @@ class stateconfirmed{
     confirmcount=confirmcount+int.parse(as);
   }
 }
+class stateprevious{
+  static var preactive;
+  static var preconfirmed;
+  static var prerecovered;
+  static var predeceased;
+  stateprevious(var a, var b ,var c){
+    preconfirmed=a;prerecovered=b;predeceased=c;
+  }
+}
 class statetotaldata{
   static var active;
   static var confirmed;

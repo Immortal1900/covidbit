@@ -178,10 +178,14 @@ class _ChoiceStateState extends State<ChoiceState> {
                       print("SELECTED STATENAME ${setSeletedState.selectedstate}");
                       print("SELECTED STATECODE ${setSeletedState.selectedstatecode}");
                       getSeletedData(shape);
-                      getSeletedData1(shape1);
+                      Statelist1 s = new Statelist1.fromJson(jsonresponce1);
+                      getSeletedData1(s);
                       //getSeletedData2(shape2);
                       districtselected=false;
                       getSeletedData3(shape3);
+                      setState(() {
+
+                      });
                       Navigator.of(context).pop();
                     },
                   );

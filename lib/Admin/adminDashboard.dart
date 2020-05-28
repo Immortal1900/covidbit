@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:covid19bitdurg/Admin/reportDetail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../drawer.dart';
 class AdminDashboard extends StatefulWidget {
@@ -8,10 +10,12 @@ class AdminDashboard extends StatefulWidget {
 }
 
 class _AdminDashboardState extends State<AdminDashboard> {
+  ScrollController _controller=ScrollController();
   List<String>suspectedFirstName=[];
   List<String>suspectedState=[];
   List<String>suspectedDist=[];
   List<String>suspectedCity=[];
+  List<String>reportDocId=[];
 
   bool isFatched=false;
   int totalReports=0;
@@ -29,6 +33,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Admin"),
+        centerTitle: true,
+          backgroundColor: Color(0xFF004272),
+
       ),
       drawer: Draw(context),
       body: isFatched==false?Center(child: CircularProgressIndicator()):Container(
@@ -41,6 +48,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SvgPicture.asset('SVG/nurse.svg'),
                   Text("Total Reports:",style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18
@@ -60,10 +68,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 color: Colors.black,
               ),
               ListView.builder(
+                controller: _controller,
                   shrinkWrap: true,
                   itemCount: totalReports,
                   itemBuilder: (context, index) {
-                    return cardview(suspectedState[index],suspectedDist[index],suspectedCity[index]);
+                    return cardview(suspectedState[index],suspectedDist[index],suspectedCity[index],reportDocId[index]);
                   }
 
               )
@@ -75,7 +84,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     );
 
   }
-  Widget cardview(String state,String dist,String city) {
+  Widget cardview(String state,String dist,String city,String reoprtId) {
     return Container(
         child: new Card(
             shape: RoundedRectangleBorder(
@@ -89,6 +98,13 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 onTap: () {
                   setState(() {
                     //SetData.psotUid=postUid;
+                    print(reoprtId);
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>ReortDetail(),
+                          settings: RouteSettings(
+                              arguments: reoprtId
+                          )),
+                    );
                   });
 
                 },
@@ -102,10 +118,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text("State:",style: TextStyle(
-
-                            fontSize: 18
-                          ),),
+                          Icon(Icons.place,
+                              color: Colors.green),
+                          SizedBox(width: 5.0),
+                          Text("State: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20
+                            ),),
                           Padding(
                             padding: const EdgeInsets.only(left:8.0),
                             child: Text("$state",style: TextStyle(
@@ -119,10 +139,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text("District:",style: TextStyle(
-
-                              fontSize: 18
-                          )),
+                          Icon(Icons.home,
+                              color: Colors.green),
+                          SizedBox(width: 5.0),
+                          Text("District: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20
+                            ),),
                           Padding(
                             padding: const EdgeInsets.only(left:8.0),
                             child: Text("$dist",style: TextStyle(
@@ -136,10 +160,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text("City:",style: TextStyle(
-
-                              fontSize: 18
-                          )),
+                          Icon(Icons.event_note,
+                              color: Colors.green),
+                          SizedBox(width: 5.0),
+                          Text("City: ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20
+                            ),),
                           Padding(
                             padding: const EdgeInsets.only(left:8.0),
                             child: Text("$city",style: TextStyle(
@@ -169,7 +197,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
             suspectedState.add(f.data["suspectedState"]);
             suspectedDist.add(f.data['suspecteddDis']);
             suspectedCity.add(f.data[ 'suspectedCity']);
-           
+            reportDocId.add(f.documentID);
 
           });
         });

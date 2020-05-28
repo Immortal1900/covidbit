@@ -23,7 +23,10 @@ void getSeletedData( Statelist shape) {
 
 }
 void getSeletedData1( Statelist1 shape1) {
+int a =shape1.std1.length;
+  stateprevious(shape1.std1[a-3].statec,shape1.std1[a-2].statec,shape1.std1[a-1].statec);
 
+statedeaths.deaths.clear();
   shape1.std1.forEach((f){
     if(f.status.contains("Confirmed")) {
       stateconfirmed(f.statec);
@@ -32,9 +35,11 @@ void getSeletedData1( Statelist1 shape1) {
       staterecoverd(f.statec);
     }
     if(f.status.contains("Deceased")) {
-      statedeaths(f.statec);
+      statedeaths.deaths.add(double.parse(f.statec));
     }
-  });
+  }
+  );
+
   double k=0,p=0;
   for(int i=0;i<stateconfirmed.confirmed.length;i++){
     k=k+stateconfirmed.confirmed[i];
@@ -43,6 +48,7 @@ void getSeletedData1( Statelist1 shape1) {
   }
   stateactive.activecount=stateactive.active[stateactive.active.length-1];
   listcreated=true;
+  print(statedeaths.deaths);
   //  print("LIST CREATED IS ${stategraphdata.positive}");
 
 }
@@ -90,4 +96,5 @@ void getSeletedData3( Slist shape) {
       }
     });
   }
+
 }
