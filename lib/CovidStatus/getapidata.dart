@@ -54,10 +54,10 @@ staterecoverd.recovered.clear();
 
   print(stateconfirmed.confirmed);
   print(statedeaths.deaths);
-  stateconfirmed.confirmed=stateconfirmed.confirmed.sublist((stateconfirmed.confirmed.length-1)-20,stateconfirmed.confirmed.length-1);
-  staterecoverd.recovered= staterecoverd.recovered.sublist(( staterecoverd.recovered.length-1)-20, staterecoverd.recovered.length-1);
-  statedeaths.deaths=statedeaths.deaths.sublist((statedeaths.deaths.length-1)-20,statedeaths.deaths.length-1);
-  stateactive.active=stateactive.active.sublist((stateactive.active.length-1)-20,stateactive.active.length-1);
+  stateconfirmed.confirmed=stateconfirmed.confirmed.sublist((stateconfirmed.confirmed.length-1)-40,stateconfirmed.confirmed.length-1);
+  staterecoverd.recovered= staterecoverd.recovered.sublist(( staterecoverd.recovered.length-1)-40, staterecoverd.recovered.length-1);
+  statedeaths.deaths=statedeaths.deaths.sublist((statedeaths.deaths.length-1)-40,statedeaths.deaths.length-1);
+  stateactive.active=stateactive.active.sublist((stateactive.active.length-1)-40,stateactive.active.length-1);
   print(stateconfirmed.confirmed);
   listcreated=true;
   //  print("LIST CREATED IS ${stategraphdata.positive}");
