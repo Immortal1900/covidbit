@@ -7,10 +7,10 @@ class setSeletedState{
   }
 }
 class stateData{
-static var totaltested="";
-stateData(var tt){
-  totaltested=tt;
-}
+  static var totaltested="";
+  stateData(var tt){
+    totaltested=tt;
+  }
 }
 class districtData{
   static var statename="Chhattisgarh";
@@ -31,6 +31,15 @@ class stateconfirmed{
   stateconfirmed(var as){
     confirmed.add(double.parse(as));
     confirmcount=confirmcount+int.parse(as);
+  }
+}
+class stateprevious{
+  static var preactive;
+  static var preconfirmed;
+  static var prerecovered;
+  static var predeceased;
+  stateprevious(var a, var b ,var c){
+    preconfirmed=a;prerecovered=b;predeceased=c;
   }
 }
 class statetotaldata{
@@ -68,4 +77,3 @@ class stateactive{
     active.add(as);
   }
 }
-

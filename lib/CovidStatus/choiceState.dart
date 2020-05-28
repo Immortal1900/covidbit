@@ -19,8 +19,7 @@ class _ChoiceStateState extends State<ChoiceState> {
     "Bihar",
     "Chandigarh",
     "Chhattisgarh",
-    "Dadra and Nagar Haveli",
-    "Daman and Diu",
+    "Dadra and Nagar Haveli and Daman and Diu",
     "Delhi",
     "Goa",
     "Gujarat",
@@ -46,8 +45,8 @@ class _ChoiceStateState extends State<ChoiceState> {
     "Tamil Nadu",
     "Telangana",
     "Tripura",
-    "Uttar Pradesh",
     "Uttarakhand",
+    "Uttar Pradesh",
     "West Bengal"
   ];
 

@@ -1,6 +1,7 @@
 
 
 import 'package:covid19bitdurg/Admin/adminDashboard.dart';
+import 'package:covid19bitdurg/CovidStatus/check.dart';
 import 'package:covid19bitdurg/CovidStatus/choiceDistrict.dart';
 
 
@@ -36,10 +37,11 @@ class MyApp extends StatelessWidget {
          //AdminDashboard(),
         //SubmitForm(),
         //CovidReports(),
-       Covid19Status(),
+      Covid19Status(),
         //StateDetail(),
         //RepoterForm(),
-        //ChoiceDistrict(),
+        //
+      //  Check(),
 
       routes: <String, WidgetBuilder> {
       '/SuspectedForm': (BuildContext context) => SuspectedForm(),
