@@ -27,12 +27,15 @@ int a =shape1.std1.length;
   stateprevious(shape1.std1[a-3].statec,shape1.std1[a-2].statec,shape1.std1[a-1].statec);
 
 statedeaths.deaths.clear();
+stateconfirmed.confirmed.clear();
+stateactive.active.clear();
+staterecoverd.recovered.clear();
   shape1.std1.forEach((f){
     if(f.status.contains("Confirmed")) {
-      stateconfirmed(f.statec);
+      stateconfirmed.confirmed.add(double.parse(f.statec));
     }
     if(f.status.contains("Recovered")) {
-      staterecoverd(f.statec);
+      staterecoverd.recovered.add(double.parse(f.statec));
     }
     if(f.status.contains("Deceased")) {
       statedeaths.deaths.add(double.parse(f.statec));
@@ -40,15 +43,23 @@ statedeaths.deaths.clear();
   }
   );
 
-  double k=0,p=0;
+  double k=0,p=0,z=0;
   for(int i=0;i<stateconfirmed.confirmed.length;i++){
     k=k+stateconfirmed.confirmed[i];
     p=p+staterecoverd.recovered[i];
-    stateactive(k-p);
+    z=k-p;
+    stateactive.active.add(z);
   }
   stateactive.activecount=stateactive.active[stateactive.active.length-1];
-  listcreated=true;
+
+  print(stateconfirmed.confirmed);
   print(statedeaths.deaths);
+  stateconfirmed.confirmed=stateconfirmed.confirmed.sublist((stateconfirmed.confirmed.length-1)-20,stateconfirmed.confirmed.length-1);
+  staterecoverd.recovered= staterecoverd.recovered.sublist(( staterecoverd.recovered.length-1)-20, staterecoverd.recovered.length-1);
+  statedeaths.deaths=statedeaths.deaths.sublist((statedeaths.deaths.length-1)-20,statedeaths.deaths.length-1);
+  stateactive.active=stateactive.active.sublist((stateactive.active.length-1)-20,stateactive.active.length-1);
+  print(stateconfirmed.confirmed);
+  listcreated=true;
   //  print("LIST CREATED IS ${stategraphdata.positive}");
 
 }
