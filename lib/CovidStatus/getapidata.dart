@@ -31,21 +31,16 @@ initalizedb(){
 Future<void> getSeletedData( Statelist shape) async {
   var lastupdated;
   int size=shape.itd.length-1;
-
   //GRAPH DATA
   for(int i=shape.itd.length-1;i>size-30;i--){
-       indiadata.dailyconfirmed.add(double.parse(shape.itd[i].dailyconfirmed));
-       indiadata.dailydeceased.add(double.parse(shape.itd[i].dailydeceased));
-       indiadata.dailyrecovered.add(double.parse(shape.itd[i].dailyrecovered));
-  }
+       indiadata.totalc.add(double.parse(shape.itd[i].totalconfirmed));
+      }
   //reverse the LIST
-  print(indiadata.dailyconfirmed);
-  indiadata.dailyconfirmed.reversed;
-  indiadata.dailyconfirmed=new List.from(indiadata.dailyconfirmed.reversed);
-  indiadata.dailyrecovered=List.from(indiadata.dailyrecovered.reversed);
-  indiadata.dailydeceased=List.from(indiadata.dailydeceased.reversed);
+  print(indiadata.totalc);
+  indiadata.totalc=new List.from(indiadata.totalc.reversed);
   indiadata(shape.itd[shape.itd.length-1].totalconfirmed,shape.itd[shape.itd.length-1].totaldeceased,shape.itd[shape.itd.length-1].totalrecovered);
-//INDIA DATA COMPLETED
+  print(indiadata.totalc);
+  //INDIA DATA COMPLETED
   shape.std.forEach((f){
     if(f.state.contains(setSeletedState.selectedstate)){
       print("ACTTIVE CASEE${f.active}");

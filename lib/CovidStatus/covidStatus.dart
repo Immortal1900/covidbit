@@ -174,7 +174,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                     padding: const EdgeInsets.only(top:8.0),
                                     child: RichText(
                                         text: TextSpan(
-                                            text:listcreated?statetotaldata.confirmed.toString():"0",
+                                            text:"CONFIRMED ${indiadata.totalconfirmed}",
                                             style:
                                             Theme.of(context).textTheme.title.copyWith(
                                                 color:  Color(0xFFFF8748),
@@ -211,7 +211,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                         child:
                                         RichText(
                                           text: TextSpan(
-                                              text: "CONFIRMED",
+                                              text: "CONFIRMED ${indiadata.totalconfirmed} + RECOVERED ${indiadata.totalrecovered}+DECEASED ${indiadata.totaldeceased}",
                                               style: TextStyle(
                                                   color:  Color(0xFFFF8748),
                                                   fontSize: 10
@@ -954,7 +954,7 @@ Widget lineChart5(BuildContext context,var color){
             lineBarsData: [
               LineChartBarData(
                   colors:[color],
-                  spots: getSpots3(),
+                  spots: getSpots5(),
                   isCurved: true,
                   dotData:  FlDotData(show: false),
                   belowBarData: BarAreaData(show: false)
@@ -1032,8 +1032,8 @@ List<FlSpot> getSpots3(){
 }
 List<FlSpot> getSpots5(){
   List<FlSpot> lo=[];
-  for(int i=0;i<indiadata.dailyconfirmed.length;i++){
-    lo.add(FlSpot(i.toDouble(),indiadata.dailyconfirmed[i]));
+  for(int i=0;i<indiadata.totalc.length;i++){
+    lo.add(FlSpot(i.toDouble(),indiadata.totalc[i]));
   }
   return lo;
 }

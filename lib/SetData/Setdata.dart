@@ -78,9 +78,8 @@ class stateactive{
   }
 }
 class indiadata{
-  static List<double> dailyconfirmed=new List();
-  static List<double> dailydeceased=[];
-  static List<double> dailyrecovered=[];
+  static List<double> totalc=new List();
+
   static var totalconfirmed;
   static var totaldeceased;
   static var totalrecovered;
