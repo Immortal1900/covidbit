@@ -32,6 +32,7 @@ Future<void> getSeletedData( Statelist shape) async {
   var lastupdated;
   int size=shape.itd.length-1;
   //GRAPH DATA
+  indiadata.totalc.clear();
   for(int i=shape.itd.length-1;i>size-30;i--){
        indiadata.totalc.add(double.parse(shape.itd[i].totalconfirmed));
       }
@@ -78,14 +79,6 @@ if(lastupdated==statetotaldata.lastupdatde){
     stateprevious.prerecovered=ds.data['prerecovered'];
     stateprevious.predeceased=ds.data['predecesed'];
   });
-  print(stateprevious.preconfirmed);
-  print(stateprevious.prerecovered);
-  print(stateprevious.preactive);
-  print(stateprevious.predeceased);
-  print(pc);
-  print(pa);
-  print(pr);
-  print(pd);
 }
 else{
   print("SHOWING NEW DATA");
