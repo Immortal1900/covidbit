@@ -19,8 +19,7 @@ class _ChoiceStateState extends State<ChoiceState> {
     "Bihar",
     "Chandigarh",
     "Chhattisgarh",
-    "Dadra and Nagar Haveli",
-    "Daman and Diu",
+    "Dadra and Nagar Haveli and Daman and Diu",
     "Delhi",
     "Goa",
     "Gujarat",
@@ -60,7 +59,6 @@ class _ChoiceStateState extends State<ChoiceState> {
     "ch",
     "ct",
     "dn",
-    "dd",
     "dl",
     "ga",
     "gj",
@@ -169,7 +167,7 @@ class _ChoiceStateState extends State<ChoiceState> {
                         ),
                       ],
                     ),
-                    onTap: (){
+                    onTap: () async {
                       print(stateiteam[index]);
                       print(stateitem.length);
                       print(statecode.length);
@@ -177,7 +175,7 @@ class _ChoiceStateState extends State<ChoiceState> {
                       setSeletedState.selectedstatecode=statecode[index];
                       print("SELECTED STATENAME ${setSeletedState.selectedstate}");
                       print("SELECTED STATECODE ${setSeletedState.selectedstatecode}");
-                      getSeletedData(shape);
+                      await getSeletedData(shape);
                       Statelist1 s = new Statelist1.fromJson(jsonresponce1);
                       getSeletedData1(s);
                       //getSeletedData2(shape2);

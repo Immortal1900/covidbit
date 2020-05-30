@@ -45,16 +45,11 @@ class MyApp extends StatelessWidget {
 
 
       routes: <String, WidgetBuilder> {
-      '/SuspectedForm': (BuildContext context) => SuspectedForm(),
+        '/SuspectedForm': (BuildContext context) => SuspectedForm(),
         '/UserForm':(BuildContext context) => RepoterForm(),
         '/Submit':(BuildContext context) => SubmitForm(),
-     '/Admin Dashboard':(BuildContext context) => AdminDashboard(),
-
-
-
-
+        '/Admin Dashboard':(BuildContext context) => AdminDashboard(),
     },
-
     );
   }
 }

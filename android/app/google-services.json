@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "732452572036",
+    "firebase_url": "https://covid19bitdurg-9ad4a.firebaseio.com",
+    "project_id": "covid19bitdurg-9ad4a",
+    "storage_bucket": "covid19bitdurg-9ad4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732452572036:android:7ba2586d6d1a84935f6bd1",
+        "android_client_info": {
+          "package_name": "com.covid19bitdurg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732452572036-7mg4oklkd09evggm48rdlmaqggva1e6h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.covid19bitdurg",
+            "certificate_hash": "2387b257ee004792e248960ba97cae1963b79cb0"
+          }
+        },
+        {
+          "client_id": "732452572036-dog9k34fmicvt645toh1ihrqa8a20cp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR6F7gekZqTEKew5K6kHGe1CQ3qhRNdSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732452572036-dog9k34fmicvt645toh1ihrqa8a20cp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732452572036:android:cf8926b5b15b7e815f6bd1",
+        "android_client_info": {
+          "package_name": "com.covidbitdur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732452572036-dog9k34fmicvt645toh1ihrqa8a20cp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR6F7gekZqTEKew5K6kHGe1CQ3qhRNdSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732452572036-dog9k34fmicvt645toh1ihrqa8a20cp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732452572036:android:a6c71f0ca7edfd3a5f6bd1",
+        "android_client_info": {
+          "package_name": "com.covidbitdurg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732452572036-dog9k34fmicvt645toh1ihrqa8a20cp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR6F7gekZqTEKew5K6kHGe1CQ3qhRNdSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732452572036-dog9k34fmicvt645toh1ihrqa8a20cp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

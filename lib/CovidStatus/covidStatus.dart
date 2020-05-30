@@ -79,7 +79,7 @@ class _Covid19StatusState extends State<Covid19Status> {
     if (response.statusCode == 200) {
       var jsonresponce=await json.decode(response.body);
       shape = new Statelist.fromJson(jsonresponce);
-      getSeletedData(shape);
+      await getSeletedData(shape);
       //setStates();
     } else {
       throw Exception('Failed to load data');
@@ -129,63 +129,114 @@ class _Covid19StatusState extends State<Covid19Status> {
 
             children: <Widget>[
               Container(
-                child: ClipPath(
-                  clipper: ClippingClass(),
+                height:MediaQuery.of(context).size.height*.3,
+
+                child:  Padding(
+                  padding: const EdgeInsets.only(top:15.0,left: 8.0,right: 8.0),
                   child: Container(
-                    height:MediaQuery.of(context).size.height*.3,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xFF3383CD),
-                          Color(0xFF11249F),
-                        ],
+                    //color: Colors.red,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          height: 180,
+                          width:MediaQuery.of(context).size.width*0.9,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            elevation: 10.0,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                // LineReportChart(),
+                                RichText(
+                                    text: TextSpan(
+                                      text: "[+"+"${stateprevious.preconfirmed}"+"]",
+                                      style:
+                                      Theme.of(context).textTheme.title.copyWith(
+                                          color:  Color(0xFFFF8748),
+                                          fontWeight: FontWeight.bold
+                                      ),
 
-                      ),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage("Images/virus.png"
-                        ),
-                      ),
 
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top:28.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          GestureDetector(
-                              onTap: ()=> _scaffoldKey.currentState.openDrawer(),
-                              child: Padding(
-                                padding: const EdgeInsets.only(top:8.0,left: 5.0),
-                                child: SvgPicture.asset('SVG/menu.svg',
-                                  color: Colors.white,),
-                              )),
-                          drcorona,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(height: 25),
-                              Text("All you need",style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.white
-                              ),),
-                              Text("is stay at home.",style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.white
-                              ),),
-                            ],
+                                    )
+                                ),
+                                listcreated?
+                                Padding(
+                                  padding: const EdgeInsets.only(top:5.0,right:5),
+                                  child: lineChart5(context, Color(0xFFFF8748)),
+                                ):
+                                dummydata(context,Color(0xFFFF4848)),
+
+                                Padding(
+                                    padding: const EdgeInsets.only(top:8.0),
+                                    child: RichText(
+                                        text: TextSpan(
+                                            text:listcreated?statetotaldata.confirmed.toString():"0",
+                                            style:
+                                            Theme.of(context).textTheme.title.copyWith(
+                                                color:  Color(0xFFFF8748),
+                                                fontWeight: FontWeight.bold
+                                            )
+                                        )
+                                    )
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top:8.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                offset: Offset(0, 4),
+                                                blurRadius: 10,
+                                                color:   Color(0xFFFF8748)
+                                            ),
+                                          ],
+                                        ),
+                                        child: CircleAvatar(
+                                          radius: 2.5,
+                                          backgroundColor: Colors.white,
+
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left:8.0),
+                                        child:
+                                        RichText(
+                                          text: TextSpan(
+                                              text: "CONFIRMED",
+                                              style: TextStyle(
+                                                  color:  Color(0xFFFF8748),
+                                                  fontSize: 10
+                                              )
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
+                        ),
+                        /********************CONFIRMED END****************/
 
-                        ],
-                      ),
+                        /*****************ATCIVE END*******************************/
+
+                        /******************************DECEASED START**************/
+
+                        /****************************DECEASED END*********************/
+
+                      ],
                     ),
                   ),
-
-
                 ),
               ),
 
@@ -892,6 +943,27 @@ Widget lineChart3(BuildContext context,var color){
     ),
   );
 }
+Widget lineChart5(BuildContext context,var color){
+  return AspectRatio(
+    aspectRatio: 3.6,
+    child: LineChart(
+        LineChartData(
+            gridData: FlGridData(show: false),
+            borderData: FlBorderData(show: false),
+            titlesData: FlTitlesData(show: false),
+            lineBarsData: [
+              LineChartBarData(
+                  colors:[color],
+                  spots: getSpots3(),
+                  isCurved: true,
+                  dotData:  FlDotData(show: false),
+                  belowBarData: BarAreaData(show: false)
+
+              )]
+        )
+    ),
+  );
+}
 Widget dummydata(BuildContext context,var color){
   print("SHOWING DUMMY DTAT");
   return AspectRatio(
@@ -955,6 +1027,13 @@ List<FlSpot> getSpots3(){
   List<FlSpot> lo=[];
   for(int i=0;i<stateconfirmed.confirmed.length;i++){
     lo.add(FlSpot(i.toDouble(),stateconfirmed.confirmed[i]));
+  }
+  return lo;
+}
+List<FlSpot> getSpots5(){
+  List<FlSpot> lo=[];
+  for(int i=0;i<indiadata.dailyconfirmed.length;i++){
+    lo.add(FlSpot(i.toDouble(),indiadata.dailyconfirmed[i]));
   }
   return lo;
 }
