@@ -79,6 +79,7 @@ class stateactive{
 }
 class indiadata{
   static List<double> totalc=new List();
+  static List<double> totalr=new List();
 
   static var totalconfirmed;
   static var totaldeceased;
