@@ -33,6 +33,9 @@ Future<void> getSeletedData( Statelist shape) async {
   int size=shape.itd.length-1;
   //GRAPH DATA
   indiadata.totalc.clear();
+  indiadata.totalc.clear();
+  indiadata.totalr.clear();
+  indiadata.totald.clear();
   for(int i=shape.itd.length-1;i>size-50;i--){
     indiadata.totalc.add(double.parse(shape.itd[i].totalconfirmed));
     indiadata.totalr.add(double.parse(shape.itd[i].totalrecovered));
