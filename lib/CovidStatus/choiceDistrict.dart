@@ -122,13 +122,13 @@ class _ChoiceDistrictState extends State<ChoiceDistrict> {
     setDistrict(sh);
   }
 
-  void setDistrict( Structure1 sh) async{
+void setDistrict( Structure1 sh) async{
     sh.std.forEach((f){
       if(f.state.contains(setSeletedState.selectedstate))
       {
 
         setState(() {
-          district=f.district.toList();
+         district=f.district.toList();
           districtiteam=f.district.toList();
         });
       }

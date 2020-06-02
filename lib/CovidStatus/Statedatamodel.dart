@@ -34,25 +34,27 @@ class indiatestedata{
   var totalconfirmed;
   var totaldeceased;
   var totalrecovered;
+  var date;
   indiatestedata({
-  this.dailyconfirmed,
-  this.dailydeceased,
-  this.dailyrecovered,
-  this.totalconfirmed,
-  this.totaldeceased,
-  this.totalrecovered,
-
-});
+    this.dailyconfirmed,
+    this.dailydeceased,
+    this.dailyrecovered,
+    this.totalconfirmed,
+    this.totaldeceased,
+    this.totalrecovered,
+    this.date
+  });
   factory indiatestedata.fromJson(Map<String, dynamic> Json){
-return indiatestedata(
-    dailyconfirmed:  Json["dailyconfirmed"],
-      dailydeceased: Json["dailydeceased"],
-    dailyrecovered:  Json["dailyrecovered"],
-    totalconfirmed:  Json["totalconfirmed"],
-      totaldeceased: Json["totaldeceased"],
-    totalrecovered:  Json["totalrecovered"]
-);
-}
+    return indiatestedata(
+        dailyconfirmed:  Json["dailyconfirmed"],
+        dailydeceased: Json["dailydeceased"],
+        dailyrecovered:  Json["dailyrecovered"],
+        totalconfirmed:  Json["totalconfirmed"],
+        totaldeceased: Json["totaldeceased"],
+        totalrecovered:  Json["totalrecovered"],
+        date:Json["date"]
+    );
+  }
 
 }
 class Statelist {

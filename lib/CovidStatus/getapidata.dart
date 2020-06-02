@@ -33,13 +33,25 @@ Future<void> getSeletedData( Statelist shape) async {
   int size=shape.itd.length-1;
   //GRAPH DATA
   indiadata.totalc.clear();
-  for(int i=shape.itd.length-1;i>size-30;i--){
-       indiadata.totalc.add(double.parse(shape.itd[i].totalconfirmed));
-      }
+  for(int i=shape.itd.length-1;i>size-50;i--){
+    indiadata.totalc.add(double.parse(shape.itd[i].totalconfirmed));
+    indiadata.totalr.add(double.parse(shape.itd[i].totalrecovered));
+    indiadata.totald.add(double.parse(shape.itd[i].totaldeceased));
+  }
   //reverse the LIST
   print(indiadata.totalc);
   indiadata.totalc=new List.from(indiadata.totalc.reversed);
+
+  indiadata.totalr=new List.from(indiadata.totalr.reversed);
+
+  indiadata.totald=new List.from(indiadata.totald.reversed);
   indiadata(shape.itd[shape.itd.length-1].totalconfirmed,shape.itd[shape.itd.length-1].totaldeceased,shape.itd[shape.itd.length-1].totalrecovered);
+  indiadata.date=shape.itd[shape.itd.length-1].date;
+  indiadata.cdaily=shape.itd[shape.itd.length-1].dailyconfirmed;
+  indiadata.rdaily=shape.itd[shape.itd.length-1].dailyrecovered;
+  indiadata.adaily=int.parse(indiadata.totalconfirmed)-int.parse(indiadata.totalrecovered);
+  indiadata.ddaily=shape.itd[shape.itd.length-1].dailydeceased;
+  print(indiadata.date);
   print(indiadata.totalc);
   //INDIA DATA COMPLETED
   shape.std.forEach((f){
@@ -67,55 +79,55 @@ Future<void> getSeletedData( Statelist shape) async {
   });
   print("LASTUPDATE IS $lastupdated");
 
-if(lastupdated==statetotaldata.lastupdatde){
-  print("JSON not updated showing previous data");
-  await Firestore.instance
-      .collection('l8')
-      .document(setSeletedState.selectedstate)
-      .get()
-      .then((DocumentSnapshot ds) {
-    stateprevious.preconfirmed=ds.data['preconfirmed'];
-    stateprevious.preactive=ds.data['preactive'];
-    stateprevious.prerecovered=ds.data['prerecovered'];
-    stateprevious.predeceased=ds.data['predecesed'];
-  });
-}
-else{
-  print("SHOWING NEW DATA");
-  shape.std.forEach((f) async {
-    if(f.state==setSeletedState.selectedstate){
-      stateprevious.preconfirmed=int.parse(statetotaldata.confirmed)-int.parse(pc);
-      stateprevious.prerecovered=int.parse(statetotaldata.recovered)-int.parse(pr);
-            stateprevious.preactive=int.parse(statetotaldata.active)-int.parse(pa);
-          stateprevious.predeceased=int.parse(statetotaldata.deaths)-int.parse(pd);
-    }
-  });
-  print("UPDATING DATABASE");
-  await Firestore.instance.collection("l8").document(setSeletedState.selectedstate).updateData({
-    'confirmed':statetotaldata.confirmed,
-    'active':statetotaldata.active,
-    'recovered':statetotaldata.recovered,
-    'deceased':statetotaldata.deaths,
-    "lastupdate":statetotaldata.lastupdatde,
-    'preconfirmed':int.parse(statetotaldata.confirmed)-int.parse(pc),
-    'preactive':int.parse(statetotaldata.active)-int.parse(pa),
-    'prerecovered':int.parse(statetotaldata.recovered)-int.parse(pr),
-    'predecesed':int.parse(statetotaldata.deaths)-int.parse(pd),
-  }).catchError((e){
-    print("ERRRROR IS $e");
-  });
-  print("DATABASE UPDATE FINISHED");
-}
+  if(lastupdated==statetotaldata.lastupdatde){
+    print("JSON not updated showing previous data");
+    await Firestore.instance
+        .collection('l8')
+        .document(setSeletedState.selectedstate)
+        .get()
+        .then((DocumentSnapshot ds) {
+      stateprevious.preconfirmed=ds.data['preconfirmed'];
+      stateprevious.preactive=ds.data['preactive'];
+      stateprevious.prerecovered=ds.data['prerecovered'];
+      stateprevious.predeceased=ds.data['predecesed'];
+    });
+  }
+  else{
+    print("SHOWING NEW DATA");
+    shape.std.forEach((f) async {
+      if(f.state==setSeletedState.selectedstate){
+        stateprevious.preconfirmed=int.parse(statetotaldata.confirmed)-int.parse(pc);
+        stateprevious.prerecovered=int.parse(statetotaldata.recovered)-int.parse(pr);
+        stateprevious.preactive=int.parse(statetotaldata.active)-int.parse(pa);
+        stateprevious.predeceased=int.parse(statetotaldata.deaths)-int.parse(pd);
+      }
+    });
+    print("UPDATING DATABASE");
+    await Firestore.instance.collection("l8").document(setSeletedState.selectedstate).updateData({
+      'confirmed':statetotaldata.confirmed,
+      'active':statetotaldata.active,
+      'recovered':statetotaldata.recovered,
+      'deceased':statetotaldata.deaths,
+      "lastupdate":statetotaldata.lastupdatde,
+      'preconfirmed':int.parse(statetotaldata.confirmed)-int.parse(pc),
+      'preactive':int.parse(statetotaldata.active)-int.parse(pa),
+      'prerecovered':int.parse(statetotaldata.recovered)-int.parse(pr),
+      'predecesed':int.parse(statetotaldata.deaths)-int.parse(pd),
+    }).catchError((e){
+      print("ERRRROR IS $e");
+    });
+    print("DATABASE UPDATE FINISHED");
+  }
 
 
   //  print("LIST CREATED IS ${stategraphdata.positive}");
 }
 void getSeletedData1( Statelist1 shape1) {
-int a =shape1.std1.length;
-statedeaths.deaths.clear();
-stateconfirmed.confirmed.clear();
-stateactive.active.clear();
-staterecoverd.recovered.clear();
+  int a =shape1.std1.length;
+  statedeaths.deaths.clear();
+  stateconfirmed.confirmed.clear();
+  stateactive.active.clear();
+  staterecoverd.recovered.clear();
   shape1.std1.forEach((f){
     if(f.status.contains("Confirmed")) {
       stateconfirmed.confirmed.add(double.parse(f.statec));
@@ -159,7 +171,7 @@ getSeletedData2() async {
   } else {
     throw Exception('Failed to load data');
   }
- }
+}
 
 void getSeletedData3( Slist shape) {
   bool datefound=false;

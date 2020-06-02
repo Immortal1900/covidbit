@@ -7,10 +7,10 @@ class setSeletedState{
   }
 }
 class stateData{
-static var totaltested="";
-stateData(var tt){
-  totaltested=tt;
-}
+  static var totaltested="";
+  stateData(var tt){
+    totaltested=tt;
+  }
 }
 class districtData{
   static var statename="Chhattisgarh";
@@ -79,14 +79,20 @@ class stateactive{
 }
 class indiadata{
   static List<double> totalc=new List();
-
+  static List<double> totalr=new List();
+  static List <double> totald=new List();
+  static var date;
   static var totalconfirmed;
   static var totaldeceased;
   static var totalrecovered;
+
+  static var cdaily;
+  static var rdaily;
+  static var ddaily;
+  static var adaily;
   indiadata(var a, var b, var c) {
     totalconfirmed = a;
     totaldeceased = b;
     totalrecovered = c;
   }
-  }
-
+}

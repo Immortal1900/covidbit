@@ -89,7 +89,7 @@ class _Covid19StatusState extends State<Covid19Status> {
 
 
     if (response1.statusCode == 200) {
-       jsonresponce1=await json.decode(response1.body);
+      jsonresponce1=await json.decode(response1.body);
       shape1 = new Statelist1.fromJson(jsonresponce1);
       getSeletedData1(shape1);
       setState(() {
@@ -118,7 +118,11 @@ class _Covid19StatusState extends State<Covid19Status> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      appBar: AppBar(
+        title: Text("Covid Status"),
+        backgroundColor: Color(0xFF004272),
+      ),
+    //  key: _scaffoldKey,
       drawer: Draw(context),
       body: isLoading?Center(child: CircularProgressIndicator(),):Container(
         child: SingleChildScrollView(
@@ -128,117 +132,398 @@ class _Covid19StatusState extends State<Covid19Status> {
             mainAxisAlignment: MainAxisAlignment.start,
 
             children: <Widget>[
-              Container(
-                height:MediaQuery.of(context).size.height*.3,
-
-                child:  Padding(
-                  padding: const EdgeInsets.only(top:15.0,left: 8.0,right: 8.0),
-                  child: Container(
-                    //color: Colors.red,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Container(
-                          height: 180,
-                          width:MediaQuery.of(context).size.width*0.9,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            elevation: 10.0,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                // LineReportChart(),
-                                RichText(
-                                    text: TextSpan(
-                                      text: "[+"+"${stateprevious.preconfirmed}"+"]",
-                                      style:
-                                      Theme.of(context).textTheme.title.copyWith(
-                                          color:  Color(0xFFFF8748),
-                                          fontWeight: FontWeight.bold
-                                      ),
 
 
-                                    )
-                                ),
-                                listcreated?
-                                Padding(
-                                  padding: const EdgeInsets.only(top:5.0,right:5),
-                                  child: lineChart5(context, Color(0xFFFF8748)),
-                                ):
-                                dummydata(context,Color(0xFFFF4848)),
+              /*((((((((((((((((((((((((((((((((((((((staert))))))))))))))))))))))))))))))))))))))*/
+              Padding(
+                padding: const EdgeInsets.only(left:8.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("India",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: Color(0xFFC73830)
+                      ),),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:5.0,left: 8.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Last update On:",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                      ),),
 
-                                Padding(
-                                    padding: const EdgeInsets.only(top:8.0),
-                                    child: RichText(
-                                        text: TextSpan(
-                                            text:"CONFIRMED ${indiadata.totalconfirmed}",
-                                            style:
-                                            Theme.of(context).textTheme.title.copyWith(
-                                                color:  Color(0xFFFF8748),
-                                                fontWeight: FontWeight.bold
-                                            )
-                                        )
-                                    )
-                                ),
-                                Padding(
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:8.0,top:5.0),
+                child:  Text(indiadata.date,
+                  style: TextStyle(
+                    fontSize: 12.0,
+                  ),),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top:10.0,left: 8.0,right: 8.0),
+                child: Container(
+                  //color: Colors.red,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        height: 150,
+                        width:MediaQuery.of(context).size.width*0.24,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          margin: new EdgeInsets.symmetric(horizontal: 2.0,vertical: 6.0),
+                          elevation: 10.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              // LineReportChart(),
+                              RichText(
+                                  text: TextSpan(
+                                    text: "[+"+"${indiadata.cdaily}"+"]",
+                                    style:
+                                    Theme.of(context).textTheme.title.copyWith(
+                                        color:  Color(0xFFFF8748),
+                                        fontWeight: FontWeight.bold
+                                    ),
+
+
+                                  )
+                              ),
+                              listcreated?
+                              Padding(
+                                padding: const EdgeInsets.only(top:5.0,right:5),
+                                child: lineChart5(context, Color(0xFFFF8748)),
+                              ):
+                              dummydata(context,Color(0xFFFF4848)),
+
+                              Padding(
                                   padding: const EdgeInsets.only(top:8.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
-                                          border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                offset: Offset(0, 4),
-                                                blurRadius: 10,
-                                                color:   Color(0xFFFF8748)
-                                            ),
-                                          ],
-                                        ),
-                                        child: CircleAvatar(
-                                          radius: 2.5,
-                                          backgroundColor: Colors.white,
+                                  child: RichText(
+                                      text: TextSpan(
+                                          text:listcreated?indiadata.totalconfirmed:"0",
+                                          style:
+                                          Theme.of(context).textTheme.title.copyWith(
+                                              color:  Color(0xFFFF8748),
+                                              fontWeight: FontWeight.bold
+                                          )
+                                      )
+                                  )
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(color:  Color(0xFFFF8748),width: 2.5 ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              offset: Offset(0, 4),
+                                              blurRadius: 10,
+                                              color:   Color(0xFFFF8748)
+                                          ),
+                                        ],
+                                      ),
+                                      child: CircleAvatar(
+                                        radius: 2.5,
+                                        backgroundColor: Colors.white,
 
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left:8.0),
+                                      child:
+                                      RichText(
+                                        text: TextSpan(
+                                            text: "CONFIRMED",
+                                            style: TextStyle(
+                                                color:  Color(0xFFFF8748),
+                                                fontSize: 10
+                                            )
                                         ),
                                       ),
-                                      Padding(
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      /********************CONFIRMED END****************/
+                      Container(
+                        height: 150,
+                        width:MediaQuery.of(context).size.width*0.24,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
+                          elevation: 10.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              //LineReportChart(),
+                              SizedBox(height: 20),
+                              listcreated?
+                              Padding(
+                                padding: const EdgeInsets.only(right:5.0,top:5.0),
+                                child: indiarecograpgh(context,Color(0xFFFF4848)),
+                              ):  dummydata(context,Color(0xFFFF4848)),
+                              Padding(
+                                  padding: const EdgeInsets.only(top:8.0),
+                                  child:RichText(
+                                      text: TextSpan(
+                                          text: listcreated?indiadata.adaily.toString():"0",
+                                          style:
+                                          Theme.of(context).textTheme.title.copyWith(
+                                              color: Color(0xFFFF4848),
+                                              fontWeight: FontWeight.bold
+                                          )
+                                      )
+                                  )
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              offset: Offset(0, 4),
+                                              blurRadius: 10,
+                                              color:   Color(0xFFFF4848)
+                                          ),
+                                        ],
+                                      ),
+                                      child: CircleAvatar(
+                                        radius: 2.5,
+                                        backgroundColor: Colors.white,
+
+                                      ),
+                                    ),
+                                    Padding(
                                         padding: const EdgeInsets.only(left:8.0),
-                                        child:
-                                        RichText(
+                                        child:RichText(
                                           text: TextSpan(
-                                              text: "CONFIRMED ${indiadata.totalconfirmed} + RECOVERED ${indiadata.totalrecovered}+DECEASED ${indiadata.totaldeceased}",
+                                              text: "ACTIVE",
                                               style: TextStyle(
-                                                  color:  Color(0xFFFF8748),
+                                                  color: Color(0xFFFF4848),
                                                   fontSize: 10
                                               )
                                           ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                                        )
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                        /********************CONFIRMED END****************/
+                      ) ,
+                      /*****************ATCIVE END*******************************/
+                      Container(
+                        height: 150,
+                        width:MediaQuery.of(context).size.width*0.24,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
+                          elevation: 10.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              //LineReportChart(),
+                              RichText(
+                                  text: TextSpan(
+                                      text: "[+"+"${indiadata.rdaily}"+"]",
+                                      style:
+                                      Theme.of(context).textTheme.title.copyWith(
+                                          color: Color(0xFF36C12C),
+                                          fontWeight: FontWeight.bold
+                                      )
+                                  )
+                              ),
+                              listcreated?Padding(
+                                padding: const EdgeInsets.only(right:5.0,top:5.0),
+                                child: indiarecograpgh(context, Color(0xFF36C12C)),
+                              ):dummydata(context,Color(0xFFFF4848)),
+                              Padding(
+                                  padding: const EdgeInsets.only(top:8.0),
+                                  child:RichText(
+                                      text: TextSpan(
+                                          text:listcreated?indiadata.totalrecovered:"0",
+                                          style:
+                                          Theme.of(context).textTheme.title.copyWith(
+                                              color: Color(0xFF36C12C),
+                                              fontWeight: FontWeight.bold
+                                          )
+                                      )
+                                  )
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(color:  Color(0xFF36C12C),width: 2.5 ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              offset: Offset(0, 4),
+                                              blurRadius: 10,
+                                              color:   Color(0xFF36C12C)
+                                          ),
+                                        ],
+                                      ),
+                                      child: CircleAvatar(
+                                        radius: 2.5,
+                                        backgroundColor: Colors.white,
 
-                        /*****************ATCIVE END*******************************/
+                                      ),
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.only(left:8.0),
+                                        child:RichText(
+                                          text: TextSpan(
+                                              text: "RECOVERED",
+                                              style: TextStyle(
+                                                  color: Color(0xFF36C12C),
+                                                  fontSize: 10
+                                              )
+                                          ),
+                                        )
 
-                        /******************************DECEASED START**************/
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      /******************************DECEASED START**************/
+                      Expanded(
+                          child:
+                          Container(
+                            height: 150,
+                            width:MediaQuery.of(context).size.width*0.24,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              margin: new EdgeInsets.symmetric(horizontal: 1.0,vertical: 6.0),
+                              elevation: 10.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  //LineReportChart(),
+                                  RichText(
+                                      text: TextSpan(
+                                          text: "[+"+"${indiadata.ddaily}"+"]",
+                                          style:
+                                          Theme.of(context).textTheme.title.copyWith(
+                                              color: Color(0xFFFF4848),
+                                              fontWeight: FontWeight.bold
+                                          )
+                                      )
+                                  ),
+                                  listcreated?Padding(
+                                    padding: const EdgeInsets.only(right:5.0,top:5.0),
+                                    child: indiadecograpgh(context,Color(0xFFFF4848)),
+                                  ):dummydata(context,Color(0xFFFF4848)),
+                                  Padding(
+                                      padding: const EdgeInsets.only(top:8.0),
+                                      child:RichText(
+                                          text: TextSpan(
+                                              text: listcreated?indiadata.totaldeceased:"0",
+                                              style:
+                                              Theme.of(context).textTheme.title.copyWith(
+                                                  color: Color(0xFFFF4848),
+                                                  fontWeight: FontWeight.bold
+                                              )
+                                          )
+                                      )
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top:8.0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(5),
+                                            border: Border.all(color:  Color(0xFFFF4848),width: 2.5 ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  offset: Offset(0, 4),
+                                                  blurRadius: 10,
+                                                  color:   Color(0xFFFF4848)
+                                              ),
+                                            ],
+                                          ),
+                                          child: CircleAvatar(
+                                            radius: 2.5,
+                                            backgroundColor: Colors.white,
 
-                        /****************************DECEASED END*********************/
+                                          ),
+                                        ),
+                                        Padding(
+                                            padding: const EdgeInsets.only(left:8.0),
+                                            child:RichText(
+                                              text: TextSpan(
+                                                  text: "DECEASED",
+                                                  style: TextStyle(
+                                                      color: Color(0xFFFF4848),
+                                                      fontSize: 10
+                                                  )
+                                              ),
+                                            )
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ) )
+                      /****************************DECEASED END*********************/
 
-                      ],
-                    ),
+                    ],
                   ),
                 ),
               ),
+              /*((((((((((((((((())))))))))(((((((((((((((((((((((((((((((((((((((((()))))))*/
 
               Padding(
                 padding: const EdgeInsets.only(left:8.0,right: 8.0),
@@ -964,6 +1249,69 @@ Widget lineChart5(BuildContext context,var color){
     ),
   );
 }
+Widget indiarecograpgh(BuildContext context,var color){
+  return AspectRatio(
+    aspectRatio: 3.6,
+    child: LineChart(
+        LineChartData(
+            gridData: FlGridData(show: false),
+            borderData: FlBorderData(show: false),
+            titlesData: FlTitlesData(show: false),
+            lineBarsData: [
+              LineChartBarData(
+                  colors:[color],
+                  spots: getindiarecograpgh(),
+                  isCurved: true,
+                  dotData:  FlDotData(show: false),
+                  belowBarData: BarAreaData(show: false)
+
+              )]
+        )
+    ),
+  );
+}
+Widget indiadecograpgh(BuildContext context,var color){
+  return AspectRatio(
+    aspectRatio: 3.6,
+    child: LineChart(
+        LineChartData(
+            gridData: FlGridData(show: false),
+            borderData: FlBorderData(show: false),
+            titlesData: FlTitlesData(show: false),
+            lineBarsData: [
+              LineChartBarData(
+                  colors:[color],
+                  spots: getindiadecograpgh(),
+                  isCurved: true,
+                  dotData:  FlDotData(show: false),
+                  belowBarData: BarAreaData(show: false)
+
+              )]
+        )
+    ),
+  );
+}
+Widget indiaactograpgh(BuildContext context,var color){
+  return AspectRatio(
+    aspectRatio: 3.6,
+    child: LineChart(
+        LineChartData(
+            gridData: FlGridData(show: false),
+            borderData: FlBorderData(show: false),
+            titlesData: FlTitlesData(show: false),
+            lineBarsData: [
+              LineChartBarData(
+                  colors:[color],
+                  spots: getindiaactcograpgh(),
+                  isCurved: true,
+                  dotData:  FlDotData(show: false),
+                  belowBarData: BarAreaData(show: false)
+
+              )]
+        )
+    ),
+  );
+}
 Widget dummydata(BuildContext context,var color){
   print("SHOWING DUMMY DTAT");
   return AspectRatio(
@@ -1034,6 +1382,27 @@ List<FlSpot> getSpots5(){
   List<FlSpot> lo=[];
   for(int i=0;i<indiadata.totalc.length;i++){
     lo.add(FlSpot(i.toDouble(),indiadata.totalc[i]));
+  }
+  return lo;
+}
+List<FlSpot> getindiarecograpgh(){
+  List<FlSpot> lo=[];
+  for(int i=0;i<indiadata.totalr.length;i++){
+    lo.add(FlSpot(i.toDouble(),indiadata.totalr[i]));
+  }
+  return lo;
+}
+List<FlSpot> getindiaactcograpgh(){
+  List<FlSpot> lo=[];
+  for(int i=0;i<indiadata.totalr.length;i++){
+    lo.add(FlSpot(i.toDouble(),indiadata.totalr[i]));
+  }
+  return lo;
+}
+List<FlSpot> getindiadecograpgh(){
+  List<FlSpot> lo=[];
+  for(int i=0;i<indiadata.totald.length;i++){
+    lo.add(FlSpot(i.toDouble(),indiadata.totald[i]));
   }
   return lo;
 }

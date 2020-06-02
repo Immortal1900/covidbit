@@ -95,7 +95,7 @@ class _ChoiceStateState extends State<ChoiceState> {
     // TODO: implement initState
     stateiteam.addAll(stateitem);
     stateListCount=stateiteam.length;
-   // getfirstdistrict();
+    // getfirstdistrict();
     super.initState();
   }
 
@@ -108,91 +108,91 @@ class _ChoiceStateState extends State<ChoiceState> {
         backgroundColor: Color(0xFF004272),
       ),
       body: Container(
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              //controller: _distController,
-              onChanged: (value) {
-                searchdistlist(value);
-              },
-              //controller: editingController,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                //controller: _distController,
+                onChanged: (value) {
+                  searchdistlist(value);
+                },
+                //controller: editingController,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 2.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                  ),
+
+                  labelText: "District",
+                  hintText: "Enter State Name",
                 ),
 
-                labelText: "District",
-                hintText: "Enter State Name",
               ),
-
             ),
-          ),
-          Expanded(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: stateListCount,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: Colors.green,width: 2.5 ),
+            Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: stateListCount,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Colors.green,width: 2.5 ),
+                              ),
+                              child: CircleAvatar(
+                                radius: 2.5,
+                                backgroundColor: Colors.white,
+
+                              ),
                             ),
-                            child: CircleAvatar(
-                              radius: 2.5,
-                              backgroundColor: Colors.white,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(stateiteam[index],
+                              style: TextStyle(
+                                  fontSize: 18.0
+                              ),
 
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(stateiteam[index],
-                            style: TextStyle(
-                                fontSize: 18.0
-                            ),
+                        ],
+                      ),
+                      onTap: () async {
+                        print(stateiteam[index]);
+                        print(stateitem.length);
+                        print(statecode.length);
+                        setSeletedState.selectedstate=stateiteam[index];
+                        setSeletedState.selectedstatecode=statecode[index];
+                        print("SELECTED STATENAME ${setSeletedState.selectedstate}");
+                        print("SELECTED STATECODE ${setSeletedState.selectedstatecode}");
+                        await getSeletedData(shape);
+                        Statelist1 s = new Statelist1.fromJson(jsonresponce1);
+                        getSeletedData1(s);
+                        //getSeletedData2(shape2);
+                        districtselected=false;
+                        getSeletedData3(shape3);
+                        setState(() {
 
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () async {
-                      print(stateiteam[index]);
-                      print(stateitem.length);
-                      print(statecode.length);
-                      setSeletedState.selectedstate=stateiteam[index];
-                      setSeletedState.selectedstatecode=statecode[index];
-                      print("SELECTED STATENAME ${setSeletedState.selectedstate}");
-                      print("SELECTED STATECODE ${setSeletedState.selectedstatecode}");
-                      await getSeletedData(shape);
-                      Statelist1 s = new Statelist1.fromJson(jsonresponce1);
-                      getSeletedData1(s);
-                      //getSeletedData2(shape2);
-                      districtselected=false;
-                      getSeletedData3(shape3);
-                      setState(() {
+                        });
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  }
 
-                      });
-                      Navigator.of(context).pop();
-                    },
-                  );
-                }
-
+              ),
             ),
-          ),
-        ],
-      ),),
+          ],
+        ),),
     );
   }
 
@@ -225,4 +225,3 @@ class _ChoiceStateState extends State<ChoiceState> {
     }
   }
 }
-

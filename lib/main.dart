@@ -1,17 +1,18 @@
 
 
 import 'package:covid19bitdurg/Admin/adminDashboard.dart';
-import 'package:covid19bitdurg/CovidStatus/Statewise.dart';
+
+import 'package:covid19bitdurg/CovidStatus/choiceDistrict.dart';
+
+
 import 'package:covid19bitdurg/CovidStatus/covidStatus.dart';
 import 'package:covid19bitdurg/CovidStatus/stateDetail.dart';
-import 'package:covid19bitdurg/Users/covidreport.dart';
 import 'package:covid19bitdurg/Users/submit.dart';
 import 'package:covid19bitdurg/Users/suspectedIndputForm.dart';
 import 'package:covid19bitdurg/Users/userinputform.dart';
 import 'package:flutter/material.dart';
-
 import 'Auth/authservice.dart';
-import 'package:covid19bitdurg/CovidStatus/districtapi.dart';
+
 
 
 
@@ -28,28 +29,30 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home:
         //statewise(),
-
         //CovidReports(),
-
         //MainFetchData(),
         //AuthService().handleAuth(),
         //PushFirebase()
-       //UserInputForm()
        //SuspectedForm(),
-        // AdminDashboard(),
+         //AdminDashboard(),
         //SubmitForm(),
         //CovidReports(),
-//ChoiceDistrict(),
-       Covid19Status(),
+      Covid19Status(),
         //StateDetail(),
-
+        //RepoterForm(),
+        //
+      //  Check(),
 
       routes: <String, WidgetBuilder> {
-        '/SuspectedForm': (BuildContext context) => SuspectedForm(),
+      '/SuspectedForm': (BuildContext context) => SuspectedForm(),
         '/UserForm':(BuildContext context) => RepoterForm(),
         '/Submit':(BuildContext context) => SubmitForm(),
-        '/Admin Dashboard':(BuildContext context) => AdminDashboard(),
+     '/Admin Dashboard':(BuildContext context) => AdminDashboard(),
+        '/CovidStatus':(BuildContext context) => Covid19Status(),
+
+
     },
+
     );
   }
 }
