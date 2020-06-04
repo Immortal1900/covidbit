@@ -52,10 +52,19 @@ Future<void> getSeletedData( Statelist shape) async {
   indiadata.date=shape.itd[shape.itd.length-1].date;
   indiadata.cdaily=shape.itd[shape.itd.length-1].dailyconfirmed;
   indiadata.rdaily=shape.itd[shape.itd.length-1].dailyrecovered;
-  indiadata.adaily=int.parse(indiadata.totalconfirmed)-int.parse(indiadata.totalrecovered);
+  indiadata.adaily=int.parse(indiadata.cdaily)-int.parse(indiadata.rdaily);
+  indiadata.totalactive=int.parse(indiadata.totalconfirmed)-int.parse(indiadata.totalrecovered);
   indiadata.ddaily=shape.itd[shape.itd.length-1].dailydeceased;
-  print(indiadata.date);
-  print(indiadata.totalc);
+
+  //Calculate TOTAL ACTIVE CASES IN INDIA
+  double z=0;
+  for(int i=0;i<indiadata.totalc.length;i++){
+
+    z=indiadata.totalc[i]-indiadata.totalr[i];
+    indiadata.totala.add(z);
+    print("${indiadata.totalc[i]} - ${indiadata.totalr[i]} = ${indiadata.totala[i]}");
+  }
+  print("TOTAL ACTIVE IN INDIA IS ${indiadata.totala}") ;
   //INDIA DATA COMPLETED
   shape.std.forEach((f){
     if(f.state.contains(setSeletedState.selectedstate)){

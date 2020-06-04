@@ -108,6 +108,9 @@ class _Covid19StatusState extends State<Covid19Status> {
         isLoading=false;
 
       });
+      setState((){
+        print("SETSTATE CALLED");
+      });
     } else {
       throw Exception('Failed to load data');
     }
@@ -210,7 +213,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                               listcreated?
                               Padding(
                                 padding: const EdgeInsets.only(top:5.0,right:5),
-                                child: lineChart5(context, Color(0xFFFF8748)),
+                                child: lineChart1(context, Color(0xFFFF8748),indiadata.totalc),
                               ):
                               dummydata(context,Color(0xFFFF4848)),
 
@@ -284,18 +287,30 @@ class _Covid19StatusState extends State<Covid19Status> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
+                              RichText(
+                                  text: TextSpan(
+                                    text: "[+"+"${indiadata.adaily}"+"]",
+                                    style:
+                                    Theme.of(context).textTheme.title.copyWith(
+                                        color:  Color(0xFFFF8748),
+                                        fontWeight: FontWeight.bold
+                                    ),
+
+
+                                  )
+                              ),
                               //LineReportChart(),
-                              SizedBox(height: 20),
+
                               listcreated?
                               Padding(
                                 padding: const EdgeInsets.only(right:5.0,top:5.0),
-                                child: indiarecograpgh(context,Color(0xFFFF4848)),
+                                child: lineChart1(context,Color(0xFFFF4848),indiadata.totala),
                               ):  dummydata(context,Color(0xFFFF4848)),
                               Padding(
                                   padding: const EdgeInsets.only(top:8.0),
                                   child:RichText(
                                       text: TextSpan(
-                                          text: listcreated?indiadata.adaily.toString():"0",
+                                          text: listcreated?indiadata.totalactive.toString():"0",
                                           style:
                                           Theme.of(context).textTheme.title.copyWith(
                                               color: Color(0xFFFF4848),
@@ -373,7 +388,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                               ),
                               listcreated?Padding(
                                 padding: const EdgeInsets.only(right:5.0,top:5.0),
-                                child: indiarecograpgh(context, Color(0xFF36C12C)),
+                                child: lineChart1(context, Color(0xFF36C12C),indiadata.totalr),
                               ):dummydata(context,Color(0xFFFF4848)),
                               Padding(
                                   padding: const EdgeInsets.only(top:8.0),
@@ -460,7 +475,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                   listcreated?Padding(
                                     padding: const EdgeInsets.only(right:5.0,top:5.0),
-                                    child: indiadecograpgh(context,Color(0xFFFF4848)),
+                                    child: lineChart1(context,Color(0xFFFF4848),indiadata.totald),
                                   ):dummydata(context,Color(0xFFFF4848)),
                                   Padding(
                                       padding: const EdgeInsets.only(top:8.0),
@@ -636,7 +651,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                               listcreated?
                               Padding(
                                 padding: const EdgeInsets.only(top:5.0,right:5),
-                                child: lineChart3(context, Color(0xFFFF8748)),
+                                child: lineChart1(context, Color(0xFFFF8748),stateconfirmed.confirmed),
                               ):
                               dummydata(context,Color(0xFFFF4848)),
 
@@ -715,7 +730,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                               listcreated?
                               Padding(
                                 padding: const EdgeInsets.only(right:5.0,top:5.0),
-                                child: lineChart4(context,Color(0xFFFF4848)),
+                                child: lineChart1(context,Color(0xFFFF4848),stateactive.active),
                               ):  dummydata(context,Color(0xFFFF4848)),
                               Padding(
                                   padding: const EdgeInsets.only(top:8.0),
@@ -799,7 +814,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                               ),
                               listcreated?Padding(
                                 padding: const EdgeInsets.only(right:5.0,top:5.0),
-                                child: lineChart2(context, Color(0xFF36C12C)),
+                                child: lineChart1(context, Color(0xFF36C12C),staterecoverd.recovered),
                               ):dummydata(context,Color(0xFFFF4848)),
                               Padding(
                                   padding: const EdgeInsets.only(top:8.0),
@@ -886,7 +901,7 @@ class _Covid19StatusState extends State<Covid19Status> {
                                   ),
                                   listcreated?Padding(
                                     padding: const EdgeInsets.only(right:5.0,top:5.0),
-                                    child: lineChart1(context,Color(0xFFFF4848)),
+                                    child: lineChart1(context,Color(0xFFFF4848),statedeaths.deaths),
                                   ):dummydata(context,Color(0xFFFF4848)),
                                   Padding(
                                       padding: const EdgeInsets.only(top:8.0),
@@ -1144,7 +1159,7 @@ class _Covid19StatusState extends State<Covid19Status> {
 
 
 
-Widget lineChart1(BuildContext context,var color){
+Widget lineChart1(BuildContext context,var color,List a){
   return AspectRatio(
     aspectRatio: 2.2,
     child: LineChart(
@@ -1155,7 +1170,7 @@ Widget lineChart1(BuildContext context,var color){
             lineBarsData: [
               LineChartBarData(
                   colors:[color],
-                  spots: getSpots1(),
+                  spots: getSpots1(a),
                   isCurved: true,
                   dotData:  FlDotData(show: false),
                   belowBarData: BarAreaData(show: false)
@@ -1165,153 +1180,7 @@ Widget lineChart1(BuildContext context,var color){
     ),
   );
 }
-Widget lineChart2(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 2.2,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getSpots2(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
 
-              )]
-        )
-    ),
-  );
-}
-Widget lineChart4(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 2.2,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getSpots4(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
-
-              )]
-        )
-    ),
-  );
-}
-Widget lineChart3(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 2.2,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getSpots3(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
-
-              )]
-        )
-    ),
-  );
-}
-Widget lineChart5(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 3.6,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getSpots5(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
-
-              )]
-        )
-    ),
-  );
-}
-Widget indiarecograpgh(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 3.6,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getindiarecograpgh(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
-
-              )]
-        )
-    ),
-  );
-}
-Widget indiadecograpgh(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 3.6,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getindiadecograpgh(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
-
-              )]
-        )
-    ),
-  );
-}
-Widget indiaactograpgh(BuildContext context,var color){
-  return AspectRatio(
-    aspectRatio: 3.6,
-    child: LineChart(
-        LineChartData(
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(show: false),
-            lineBarsData: [
-              LineChartBarData(
-                  colors:[color],
-                  spots: getindiaactcograpgh(),
-                  isCurved: true,
-                  dotData:  FlDotData(show: false),
-                  belowBarData: BarAreaData(show: false)
-
-              )]
-        )
-    ),
-  );
-}
 Widget dummydata(BuildContext context,var color){
   print("SHOWING DUMMY DTAT");
   return AspectRatio(
@@ -1349,63 +1218,15 @@ List<FlSpot> dummyspots(){
     FlSpot(10,2.65),
   ];
 }
-List<FlSpot> getSpots1(){
+List<FlSpot> getSpots1(List a){
   List<FlSpot> lo=[];
-  for(int i=0;i<statedeaths.deaths.length;i++){
-    lo.add(FlSpot(i.toDouble(),statedeaths.deaths[i]));
+  for(int i=0;i<a.length;i++){
+    lo.add(FlSpot(i.toDouble(),a[i]));
   }
   return lo;
 }
-List<FlSpot> getSpots4(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<stateactive.active.length;i++){
-    lo.add(FlSpot(i.toDouble(),stateactive.active[i]));
-  }
-  return lo;
-}
-List<FlSpot> getSpots2(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<staterecoverd.recovered.length;i++){
-    lo.add(FlSpot(i.toDouble(),staterecoverd.recovered[i]));
-  }
 
-  return lo;
-}
-List<FlSpot> getSpots3(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<stateconfirmed.confirmed.length;i++){
-    lo.add(FlSpot(i.toDouble(),stateconfirmed.confirmed[i]));
-  }
-  return lo;
-}
-List<FlSpot> getSpots5(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<indiadata.totalc.length;i++){
-    lo.add(FlSpot(i.toDouble(),indiadata.totalc[i]));
-  }
-  return lo;
-}
-List<FlSpot> getindiarecograpgh(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<indiadata.totalr.length;i++){
-    lo.add(FlSpot(i.toDouble(),indiadata.totalr[i]));
-  }
-  return lo;
-}
-List<FlSpot> getindiaactcograpgh(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<indiadata.totalr.length;i++){
-    lo.add(FlSpot(i.toDouble(),indiadata.totalr[i]));
-  }
-  return lo;
-}
-List<FlSpot> getindiadecograpgh(){
-  List<FlSpot> lo=[];
-  for(int i=0;i<indiadata.totald.length;i++){
-    lo.add(FlSpot(i.toDouble(),indiadata.totald[i]));
-  }
-  return lo;
-}
+
 class ClippingClass extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {

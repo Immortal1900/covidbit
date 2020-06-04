@@ -81,11 +81,12 @@ class indiadata{
   static List<double> totalc=new List();
   static List<double> totalr=new List();
   static List <double> totald=new List();
+  static List <double> totala=new List();
   static var date;
   static var totalconfirmed;
   static var totaldeceased;
   static var totalrecovered;
-
+  static var totalactive;
   static var cdaily;
   static var rdaily;
   static var ddaily;
